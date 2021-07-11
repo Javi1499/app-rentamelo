@@ -1,6 +1,6 @@
 const pool = require("../models/connection");
 const helpers = require('../lib/helpers');
-//const jtw = require("jsonwebtoken");
+const jtw = require("jsonwebtoken");
 
 const controladorAutenticacion = {
     iniciarSesion: async (req, res) => {
@@ -15,10 +15,11 @@ const controladorAutenticacion = {
 
                 const user={
                     email:respuesta[0].email,
-                    usuario:respuesta[0].usuario
+                    usuario:respuesta[0].usuario,
+                    id_usuario:respuesta[0].id_usuario
                 }
-                // const token = jtw.sign(user, "secretJWT");
-                res.json({ status: 200, mensaje: "Bienvenido", auth: true, /*token,*/ data: {id_usuario:respuesta[0].id_usuario, rol:respuesta[0].rol} })
+                const token = jtw.sign(user, "secretJWT");
+                res.json({ status: 200, mensaje: "Bienvenido", auth: true, token, data: {id_usuario:respuesta[0].id_usuario}})
                 return
             }
             res.json({ status: 400, mensaje: "Contraseña incorrecta", auth: false });

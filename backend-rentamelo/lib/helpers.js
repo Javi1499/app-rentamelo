@@ -1,4 +1,5 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const moment = require('moment');
 const helpers = {};
 const pool = require("../models/connection");
 const jtw = require("jsonwebtoken");
@@ -22,22 +23,22 @@ helpers.loginPassword = async (password, passwordGuardada)=>{
 
 };
 
-// helpers.verifyJWT =  (req, res, next) =>{
-//     const token = req.headers["authorization"];
-//     if(!token){
-//         res.send("Necesitas token");
-//     } else{
-//         jtw.verify(token, "secretJWT",(err, decode)=>{
-//             if(err){
-//                 res.json({auth:false, mensaje:"Te falta Auntenticarte"});
-//             } else {
-//                 console.log(decode)
-//                 req.token = decode.email;
-//                 next();
-//             }
-//         })
-//     }
-// }
+helpers.verifyJWT =  (req, res, next) =>{
+    const token = req.headers["authorization"];
+    if(!token){
+        res.send("Necesitas token");
+    } else{
+        jtw.verify(token, "secretJWT",(err, decode)=>{
+            if(err){
+                res.json({auth:false, mensaje:"Te falta Auntenticarte"});
+            } else {
+                req.token = decode.email;
+                req.id_usuario = decode.id_usuario
+                next();
+            }
+        })
+    }
+}
 
 // helpers.esAdmin = async (req, res, next) =>{
 //     console.log(req.token+"Este es el id")
@@ -54,6 +55,20 @@ helpers.loginPassword = async (password, passwordGuardada)=>{
 
 
 // }
+
+helpers.obtenerHoraFinRenta = async( tiempoRenta)=>{
+let fechaInicio = moment();
+
+let fechaFinal = fechaInicio.clone();
+fechaFinal= fechaFinal.add(tiempoRenta, 'hours')
+
+const fechaString =(fechaFinal.format("DD/MM/YYYY HH:mm "))
+
+fechaInicio= fechaInicio.format("YYYY-MM-DD HH:MM");
+fechaFinal= fechaFinal.format("YYYY-MM-DD HH:MM");
+
+return {fechaInicio, fechaFinal, msj:fechaString};
+}
 
 
 module.exports = helpers;
