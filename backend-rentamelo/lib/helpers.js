@@ -28,12 +28,15 @@ helpers.verifyJWT =  (req, res, next) =>{
     if(!token){
         res.send("Necesitas token");
     } else{
+      
         jtw.verify(token, "secretJWT",(err, decode)=>{
             if(err){
                 res.json({auth:false, mensaje:"Te falta Auntenticarte"});
             } else {
+               
                 req.token = decode.email;
                 req.id_usuario = decode.id_usuario
+                
                 next();
             }
         })

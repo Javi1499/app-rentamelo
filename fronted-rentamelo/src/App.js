@@ -1,42 +1,28 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import ListaProductos from './components/ListaProductos'
 import NavbarC from './components/Navbar'
 import Formulario from './components/Formulario'
 import Login from './components/Login'
+import ProductoView from './components/ProductoView'
 import { Container, Row } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { getToken } from "./helpers";
+import SingUp from './components/SignUp';
+import PrivateRoute from './components/PrivateRoute';
+
 
 function App() {
-  const [estaLogueado, setEstaLogueado] = useState(false);
-
-useEffect(() => {
-  let token = getToken();
-  if(token) return setEstaLogueado(true);
-
-}, [])
-
   return (
     <Router>
       <NavbarC />
-      <Container className="App">
-        {estaLogueado ?         <Switch>
-    
-          <Route path="/agregar-producto">
-            <Row className="justify-content-center">
-            <Formulario/>
-            </Row>
-          </Route>
-          <Route path="/" exact>
-          <ListaProductos />
-          </Route>
-        </Switch> : 
-        <Login
-        setEstaLogueado={setEstaLogueado}
-        />
-        }
 
-      </Container>
+        <Switch>
+          <PrivateRoute path="/agregar-producto" component={Formulario}/>
+          <Route path="/producto/:id_producto" children={<ProductoView />} />
+          <PrivateRoute path="/mis-productos/:condicion" exact children={<ListaProductos />} />
+          <Route path="/" exact component={ListaProductos} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={SingUp} />
+        </Switch>
     </Router>
 
 

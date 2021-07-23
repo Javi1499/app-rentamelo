@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from 'react'
 import axios from 'axios';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 import { setToken, initAxiosIntterceptos } from '../helpers';
 initAxiosIntterceptos();
-const Login = ({ setEstaLogueado }) => {
+const Login = () => {
    // const [estaRegistrado, setEstaRegistrado] = useState(true);
     const [error, setError] = useState({ error: false, mensaje: "" });
     const [datosLogin, setDatosLogin] = useState({
@@ -24,7 +24,7 @@ const Login = ({ setEstaLogueado }) => {
     const { email, password } = datosLogin;
 
     //Function para iniciar sesion
-    const functionIniciarSesion = async (e) => {
+    const functionIniciarSesion = async (e, props) => {
         e.preventDefault();
         if (email.trim() === '' || password.trim() === "") {
             setError({ error: true, mensaje: "Todos los campos son obligatorios" });
@@ -32,8 +32,8 @@ const Login = ({ setEstaLogueado }) => {
         } else {
             const respuesta = await axios.post("http://localhost:4006/autenticacion/login", datosLogin);
             if (respuesta.data.status === 200) {
-                setEstaLogueado(true);
                 setToken(respuesta.data.token);
+                window.location.href='/'
                 // if (respuesta.data.data.rol === "admin") {
                 //     localStorage.setItem('admin', true);
                 //     setError({ error: false })
@@ -47,8 +47,8 @@ const Login = ({ setEstaLogueado }) => {
     return (
         <Fragment >
             <Container>
-                <div className="u-full-width">
-                    <div className="two-half column">
+                <Row className="justify-content-center">
+                <Col className=" col-6">
                         <h2>INICIA SESIÓN</h2>
                         {error.error ? <p className="alerta-error">{error.mensaje}</p> : null}
 
@@ -65,19 +65,20 @@ const Login = ({ setEstaLogueado }) => {
                             />
                             <Form.Label>Contraseña</Form.Label>
                             <Form.Control
-                                type="passwod"
+                                type="password"
                                 placeholder="********"
                                 name="password"
                                 onChange={actualizarState}
                                 value={password}
                             />
-                            <Button
+                            <Button className="mt-2"
                                 type="submit">
                                 Iniciar SESIÓN
                             </Button>
-                        </Form>
-                    </div>
-                </div>
+                            <Col>No tienes cuenta? <a href="/signup">Registrate</a></Col>
+                        </Form> 
+                </Col>
+                </Row>
             </Container>
         </Fragment>
     );
