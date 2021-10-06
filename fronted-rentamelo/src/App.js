@@ -1,28 +1,32 @@
 import React from 'react';
-import ListaProductos from './components/ListaProductos'
 import NavbarC from './components/Navbar'
 import Formulario from './components/Formulario'
 import Login from './components/Login'
 import ProductoView from './components/ProductoView'
-import { Container, Row } from 'react-bootstrap';
+import FontsProvider from "./style/Fonts"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SingUp from './components/SignUp';
 import PrivateRoute from './components/PrivateRoute';
-
+import MyProducts from './views/Auth/MyProducts';
+import Home from './views/Public/Home';
+//const url="http://localhost:3000"
 
 function App() {
   return (
-    <Router>
+    <Router >
+      <FontsProvider />
       <NavbarC />
-
+      <FontsProvider />
+      <div className="container">
         <Switch>
-          <PrivateRoute path="/agregar-producto" component={Formulario}/>
-          <Route path="/producto/:id_producto" children={<ProductoView />} />
-          <PrivateRoute path="/mis-productos/:condicion" exact children={<ListaProductos />} />
-          <Route path="/" exact component={ListaProductos} />
+          <PrivateRoute path="/agregar-producto" component={Formulario} />
+          <Route path="/producto/:id_producto" exact><ProductoView /></Route>
+          <Route path="/mis-productos" exact ><MyProducts /></Route>
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={SingUp} />
+          <Route path="/" exact component={Home} />
         </Switch>
+      </div>
     </Router>
 
 

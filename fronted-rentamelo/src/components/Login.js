@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 import { setToken, initAxiosIntterceptos } from '../helpers';
 initAxiosIntterceptos();
+const url="http://localhost:3000"
+const urlServidor = "http://localhost:4006"
 const Login = () => {
    // const [estaRegistrado, setEstaRegistrado] = useState(true);
     const [error, setError] = useState({ error: false, mensaje: "" });
@@ -30,10 +32,10 @@ const Login = () => {
             setError({ error: true, mensaje: "Todos los campos son obligatorios" });
             return
         } else {
-            const respuesta = await axios.post("http://localhost:4006/autenticacion/login", datosLogin);
+            const respuesta = await axios.post(`${urlServidor}/autenticacion/login`, datosLogin);
             if (respuesta.data.status === 200) {
                 setToken(respuesta.data.token);
-                window.location.href='/'
+                window.location.href=`${url}/`
                 // if (respuesta.data.data.rol === "admin") {
                 //     localStorage.setItem('admin', true);
                 //     setError({ error: false })
@@ -75,7 +77,7 @@ const Login = () => {
                                 type="submit">
                                 Iniciar SESIÓN
                             </Button>
-                            <Col>No tienes cuenta? <a href="/signup">Registrate</a></Col>
+                            <Col>No tienes cuenta? <a href={`${url}/signup`}>Registrate</a></Col>
                         </Form> 
                 </Col>
                 </Row>

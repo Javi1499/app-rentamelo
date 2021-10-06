@@ -8,6 +8,11 @@ const ProductoView = () => {
     const [producto, setProducto] = useState([]);
     const [usuarioPropietario, setUsuarioPropietario] = useState([]);
     const [mainImg, setMainImg] = useState('');
+    const [datosRenta, setDatosRenta] = useState({
+        renta: 0,
+        tiempoRenta: 0,
+        id_producto: 79
+    });
 
     console.log(id_producto)
     const obtenerInfoProducto = async () => {
@@ -18,9 +23,10 @@ const ProductoView = () => {
         console.log(producto)
         setUsuarioPropietario(res.data.data.infoUsuario);
     }
-    // const cambiarImg=(numImg)=>{
-    // setMainImg()
-    // }
+
+    const realizarRenta = async () => {
+        const res = await axios.post(`http://localhost:4006/rentas/realizar-renta`, datosRenta);
+    }
     useEffect(() => {
         obtenerInfoProducto();
     }, []);
@@ -28,12 +34,12 @@ const ProductoView = () => {
     const { apellido_paterno } = usuarioPropietario;
     const { nombre, descripcion, precio_dia, precio_hora, tiempo_entrega, ubicacion, uri_img_1, uri_img_2, uri_img_3 } = producto;
     return (
-        <div className="container" >
-            <div className="mainImg">
-                <img src={mainImg} />
-            </div>
+        <div className="vistaProducto" >
+
+            <img className="mainImg" src={mainImg} />
+
             <div className="informacionP">
-                <h1>{nombre}</h1>
+                <h1 className="titulo">{nombre}</h1>
                 <h5>Descripcion</h5>
                 <p>{descripcion}</p>
             </div>
@@ -54,23 +60,23 @@ const ProductoView = () => {
                 </div>
 
             </div>
+            <div className="tiempoRenta">
+                <label>Por cuabto tiempo deseas rentar el producto?</label><br />
+                <input type="number" name="tiempoRenta" onChange={e => { setDatosRenta({ ...datosRenta, [e.target.name]: e.target.value }) }} />
+                <label>Dia(s)</label>
+                <input type="radio" name="renta" value={0} onChange={e => { setDatosRenta({ ...datosRenta, [e.target.name]: e.target.value }) }} />
+                <label>Hora(s)</label>
+                <input type="radio" name="renta" value={1} onChange={e => { setDatosRenta({ ...datosRenta, [e.target.name]: e.target.value }) }} />
 
+            </div>
 
-            
-            <div  className="btnRentar">
-            <button>RENTAR PRODUCTO</button>
+            <div className="btnRentar">
+                <button onClick={()=>realizarRenta()}>RENTAR PRODUCTO</button>
             </div>
             <div className="imgPrevisuales">
-                <div className="imgSecundaria">
-                    <img src={uri_img_1} rounded width="100%" onClick={() => { setMainImg(uri_img_1) }} />
-                </div>
-                <div className="imgSecundaria">
-                    <img src={uri_img_2} rounded width="100%" onClick={() => { setMainImg(uri_img_2) }} />
-                </div>
-                <div className="imgSecundaria">
-                    <img src={uri_img_3} rounded width="100%" onClick={() => { setMainImg(uri_img_3) }} />
-                </div>
-
+                <img className="imgSecundaria" src={uri_img_1} onClick={() => { setMainImg(uri_img_1) }} />
+                <img className="imgSecundaria" src={uri_img_2} onClick={() => { setMainImg(uri_img_2) }} />
+                <img className="imgSecundaria" src={uri_img_3} height="100%" onClick={() => { setMainImg(uri_img_3) }} />
             </div>
             <div className="infoArrendador">
                 <h4>Datos de arrendador</h4>

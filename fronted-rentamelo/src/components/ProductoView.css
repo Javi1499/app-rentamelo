@@ -1,28 +1,28 @@
-.container{
+.vistaProducto{
     display: grid;
-    width: max-content;
-    height:500px;
+    width: auto;
+    height:720px;
     grid-template-columns: 10% 40% 50%;
-    grid-template-rows: 50% 15% 20% 15% ;
+    grid-template-rows: 30% 15% 15% 30% ;
 }
 
 .mainImg{
     grid-area: 1/2/4/3;
     width: 90%;
-    height: 70%;
+    height: 60%;
     justify-content: center;
     margin: 1.5rem;
-}
-img{
-    width: 100%;
-    height: 100%;
     border-radius: .5rem;
 }
+
 .informacionP{
     grid-area: 1/3/2/4;
     margin: 1rem 0 0 2rem;
     width: 100%;
     height: 100%;
+}
+.titulo{
+    height: fit-content;
 }
 .infoRenta{
     grid-area: 2/3/3/4;
@@ -52,7 +52,7 @@ width: 50%;
     display: flex;
     grid-area: 3/3/4/4;
     height: 100%;
-    margin: 3rem 0 0 2rem;
+    margin: 2rem 0 0 2rem;
 }
 .infoEntrega div{
     width: 50%;
@@ -60,9 +60,9 @@ width: 50%;
 .btnRentar{
     grid-area:4/3/5/4;
     justify-self: center;
-    height: 60%;
+    height: 20%;
     width: 80%;
-    align-self: end;
+    align-self: center;
 }
 button{
     width: 100%;
@@ -77,9 +77,17 @@ button{
 .imgPrevisuales{
     grid-area: 1/1/4/2;
     width: 90%;
-    height: 70%;
+    height: 60%;
     align-self: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 6.5rem;
+}
+
+.tiempoRenta{
+    grid-area:4/3/5/4;
+    justify-self: center;
+    height: 40%;
+    width: 90%;
+    align-self: start;
 }
 .imgSecundaria{
     margin-bottom:1rem ;
@@ -91,4 +99,14 @@ button{
 .infoArrendador{
     grid-area:3/2/4/3;
     margin-left: 1.5rem;
+}
+
+input[type=radio]{
+    margin: .5rem;
+}
+input[type=number]{
+    border-radius: 5px;
+    width: 10%;
+    border-width: 1px;
+    margin-right: .5rem;
 }

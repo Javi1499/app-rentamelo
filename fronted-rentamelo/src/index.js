@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import FontsProvider from "./style/Fonts"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <FontsProvider /> */}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
