@@ -14,12 +14,11 @@ const Component = () => {
             data.append("files", dataProduct.files[index])
         }
 
-        data.append('nombre', dataProduct.name)
-        data.append('descripcion', dataProduct.description)
-        data.append('id_tiempo_entrega', dataProduct.time)
-        data.append('id_ubicacion', dataProduct.location)
-        data.append('precio_dia', dataProduct.price)
-        data.append('precio_hora', 30)
+        data.append('name', dataProduct.name)
+        data.append('description', dataProduct.description)
+        data.append('idDeliveryTime', dataProduct.time)
+        data.append('idLocation', dataProduct.location)
+        data.append('price', dataProduct.price)
 
 
         console.log(data);

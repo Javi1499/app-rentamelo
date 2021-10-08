@@ -5,15 +5,15 @@ const Component = (props) => {
     const { productsData, change, setChange, isMyProduct } = props;
     const dataVerify = productsData.length > 0;
 
-
     return (
         <ProductList>
             {dataVerify ? null : <div><h1>No has publicado ningun producto</h1> <a href="/agregar-producto">hazlo ahora</a></div>}
 
             {productsData.map(producto =>
-                <Product key={`product-${producto.id_producto}`}>
+                <Product key={`product-${producto.idProduct}`}>
                     <MiProducto
-                        dataProduct={{ producto, isMyProduct: isMyProduct || false }}
+                        dataProduct={producto}
+                        isMyProduct={isMyProduct}
                         setChange={setChange}
                         change={change}
                     />

@@ -8,46 +8,45 @@ import { ImageContainer, ProductContainer, Price, Title, Description, Location, 
 import ReactTooltip from 'react-tooltip';
 const url = "http://localhost:3000"
 const urlServidor = "http://localhost:4006"
-const MyProduct = ({ dataProduct: { producto, change, setChange }, isMyProduct }) => {
-
+const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
     const pausarPublicacion = async () => {
-        await axios.post(`${urlServidor}/productos/pausar-publicacion/${producto.id_producto}`);
+        await axios.post(`${urlServidor}/productos/pausar-publicacion/${dataProduct.idProduct}`);
         setChange(!change);
         return;
     }
     const reanudarPublicacion = async () => {
-        await axios.post(`${urlServidor}/productos/reanudar-publicacion/${producto.id_producto}`);
+        await axios.post(`${urlServidor}/productos/reanudar-publicacion/${dataProduct.idProduct}`);
         setChange(!change);
         return;
     }
     const eliminarPublicacion = async () => {
-        await axios.post(`${urlServidor}/productos/eliminar-publicacion/${producto.id_producto}`);
+        await axios.post(`${urlServidor}/productos/eliminar-publicacion/${dataProduct.idProduct}`);
         setChange(!change);
         return;
     }
-    const { uri_img_1, nombre, descripcion, id_producto, precio_dia, ubicacion } = producto;
+    const { img1, name, description, idProduct, price, ubicacion } = dataProduct;
     return (
 
         <ProductContainer>
             <ImageContainer>
-                <ImageComponent src={uri_img_1} />
+                <ImageComponent src={img1} />
             </ImageContainer>
-            <Title>{nombre}</Title>
+            <Title>{name}</Title>
             <Description>
                 <LinesEllipsis
-                    text={descripcion}
+                    text={description}
                     maxLine='2'
                 />
             </Description>
-            <Price >${precio_dia} x dia</Price>
+            <Price >${price} x dia</Price>
             <Location >{ubicacion}</Location>
             <ButtonContainer>
-                <Button onClick={() => window.location.href = `${url}/producto/${id_producto}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
+                <Button onClick={() => window.location.href = `${url}/producto/${idProduct}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
 
             </ButtonContainer>
             {isMyProduct && <Controls>
                 {
-                    producto.id_estatus === "1" ? <Icon><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></Icon>
+                    dataProduct.idStatus === "1" ? <Icon><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></Icon>
                         :
                         <Icon><FontAwesomeIcon data-tip="Reanudar publicacion" icon={faPlay} onClick={() => reanudarPublicacion()} /></Icon>
 

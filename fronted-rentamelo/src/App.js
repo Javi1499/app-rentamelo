@@ -20,7 +20,7 @@ function App() {
       <div className="container">
         <Switch>
           <PrivateRoute path="/agregar-producto" component={AddProduct} />
-          <Route path="/producto/:id_producto" exact><ProductoView /></Route>
+          <Route path="/producto/:idProduct" exact><ProductoView /></Route>
           <Route path="/mis-productos" exact ><MyProducts /></Route>
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={SingUp} />

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CustomInputFile = styled.div`
-width: 250px;
+width: 500px;
 height: fit-content;
 `
 export const Label = styled.label`
