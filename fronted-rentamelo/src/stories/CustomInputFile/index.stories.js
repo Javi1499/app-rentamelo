@@ -1,22 +1,15 @@
 // ButtonGroup.stories.js | ButtonGroup.stories.jsx
 import React from 'react';
-import { MyProduct as Component } from 'components'
+import { CustomInputFile as Component } from 'components'
 import { MockMyProduct } from 'mocks'
 
 export default {
-    title: 'rentamelo/MyProduct',
+    title: 'rentamelo/CustomInputFile',
     component: Component,
 };
 const Template = (args) => <Component{...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    dataProduct: MockMyProduct,
-    isMyProduct: false
+    actualizarStateImg: () => console.log("Hello")
 };
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-    dataProduct: MockMyProduct,
-    isMyProduct: true
-}

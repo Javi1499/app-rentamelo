@@ -28,7 +28,7 @@ const MyProducts = () => {
     return (
         <Container>
             <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
-            <ProductList productsData={productsData} change={change} setChange={setChange} />
+            <ProductList productsData={productsData} change={change} setChange={setChange} isMyProduct={true} />
         </Container>
     )
 }

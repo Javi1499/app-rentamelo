@@ -9,6 +9,7 @@ export const ProductList = styled.div`
     grid-auto-rows: auto;
     grid-gap: 16px;
     justify-items:center;
+    margin: 1.5rem 0;
 `;
 
 export const Product = styled.div`

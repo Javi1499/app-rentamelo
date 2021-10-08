@@ -8,7 +8,8 @@ import { ImageContainer, ProductContainer, Price, Title, Description, Location, 
 import ReactTooltip from 'react-tooltip';
 const url = "http://localhost:3000"
 const urlServidor = "http://localhost:4006"
-const MiProducto = ({ producto, change, setChange }) => {
+const MyProduct = ({ dataProduct: { producto, change, setChange }, isMyProduct }) => {
+
     const pausarPublicacion = async () => {
         await axios.post(`${urlServidor}/productos/pausar-publicacion/${producto.id_producto}`);
         setChange(!change);
@@ -41,23 +42,24 @@ const MiProducto = ({ producto, change, setChange }) => {
             <Price >${precio_dia} x dia</Price>
             <Location >{ubicacion}</Location>
             <ButtonContainer>
-                <Button onClick={() => window.location.href = `${url}/producto/${id_producto}`} children={"Ver publicación"} />
+                <Button onClick={() => window.location.href = `${url}/producto/${id_producto}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
 
             </ButtonContainer>
-            <Controls>
+            {isMyProduct && <Controls>
                 {
-                    producto.id_estatus === "1" ? <Icon><FontAwesomeIcon icon={faPause} onClick={() => pausarPublicacion()} /></Icon>
+                    producto.id_estatus === "1" ? <Icon><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></Icon>
                         :
-                        <Icon><FontAwesomeIcon icon={faPlay} onClick={() => reanudarPublicacion()} /></Icon>
+                        <Icon><FontAwesomeIcon data-tip="Reanudar publicacion" icon={faPlay} onClick={() => reanudarPublicacion()} /></Icon>
 
                 }
                 <Icon><FontAwesomeIcon data-tip="Eliminar publicacion" icon={faTrash} onClick={() => eliminarPublicacion()} /></Icon>
                 <ReactTooltip place="top" type="dark" effect="solid" />
-            </Controls>
+            </Controls>}
+
         </ProductContainer>
 
     );
 }
 
 
-export default MiProducto;
+export default MyProduct;

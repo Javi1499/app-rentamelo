@@ -2,7 +2,7 @@ import React from 'react';
 import MiProducto from '../MyProduct'
 import { Product, ProductList } from './styled'
 const Component = (props) => {
-    const { productsData, change, setChange } = props;
+    const { productsData, change, setChange, isMyProduct } = props;
     const dataVerify = productsData.length > 0;
 
 
@@ -13,7 +13,7 @@ const Component = (props) => {
             {productsData.map(producto =>
                 <Product key={`product-${producto.id_producto}`}>
                     <MiProducto
-                        producto={producto}
+                        dataProduct={{ producto, isMyProduct: isMyProduct || false }}
                         setChange={setChange}
                         change={change}
                     />

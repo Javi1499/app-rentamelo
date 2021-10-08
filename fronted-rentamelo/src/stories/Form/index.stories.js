@@ -1,10 +1,10 @@
 // ButtonGroup.stories.js | ButtonGroup.stories.jsx
 import React from 'react';
-import { MyProduct as Component } from 'components'
+import { Form as Component } from 'components'
 import { MockMyProduct } from 'mocks'
 
 export default {
-    title: 'rentamelo/MyProduct',
+    title: 'rentamelo/Form',
     component: Component,
 };
 const Template = (args) => <Component{...args} />;

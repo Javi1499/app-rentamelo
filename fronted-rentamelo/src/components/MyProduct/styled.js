@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const ProductContainer = styled.div`
 display: grid;
 width: 250px;
-height: fit-content;
-border-radius: 4px;
+height: 380px;
+border-radius: 20px;
 padding: 16px;
 grid-template:
 "image image" 150px
@@ -20,7 +20,7 @@ export const ImageContainer = styled.div`
 grid-area: image;
 margin-bottom: 8px;
 >div{
-    border-radius: 4px;
+    border-radius: 8px;
 }
 `
 export const Title = styled.h2`
@@ -43,11 +43,11 @@ display: inherit;
 grid-area: price;
 height: 100%;
 color: blue;
-font-size: 18px;
+font-size: 16px;
 text-align: center;
 font-family: "Roboto";
 margin: 0;
-align-content: center;
+align-content: start;
 `
 export const Controls = styled.div`
 grid-area: controls;
