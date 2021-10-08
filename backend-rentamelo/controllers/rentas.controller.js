@@ -6,7 +6,9 @@ const moment = require('moment');
 const rentasController = {
     realizarRenta: async (req, res) => {
         console.log("Entro")
-        const { tiempoRenta, id_producto, id_usuario } = req.body;
+        const id_usuario = req.id_usuario;
+        const { tiempoRenta, id_producto } = req.body;
+        console.log(req.body.datosRenta)
         console.log(tiempoRenta, id_producto, id_usuario)
         try {
             const infoProducto = await pool.query(`SELECT * FROM productos WHERE id_producto = ${id_producto}`);
@@ -30,9 +32,13 @@ const rentasController = {
             res.status(200).json({ mensaje: "Renta procesada. En espera de confirmacion", data: [] })
         } catch (error) {
             if (error == 0) {
+                console.error(error)
                 res.status(400).json({ mensaje: "Hubo un error", data: [] })
             } else if (error==1) {
+                console.error(error)
                 res.status(400).json({ mensaje: "No puedes rentarte un producto de tu propiedad", data: [] })
+            } else{
+                console.error(error)
             }
         }
       

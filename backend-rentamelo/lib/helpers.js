@@ -33,10 +33,9 @@ helpers.verifyJWT =  (req, res, next) =>{
             if(err){
                 res.json({auth:false, mensaje:"Te falta Auntenticarte"});
             } else {
-               
                 req.token = decode.email;
-                req.id_usuario = decode.id_usuario
-                
+                req.idUser = decode.idUser
+                console.log(req.idUser)
                 next();
             }
         })

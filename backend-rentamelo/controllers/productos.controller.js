@@ -7,20 +7,19 @@ const e = require("express");
 const controladorProductos = {
     agregarProducto: async (req, res) => {
         console.log("Entro")
-        const { nombre, descripcion, precio_hora, precio_dia, id_tiempo_entrega, id_ubicacion } = req.body;
+        const { name, description, price, idDeliveryTime, idLocation } = req.body;
 
         const nuevoProducto = {
-            nombre,
-            descripcion,
-            precio_hora,
-            precio_dia,
-            id_tiempo_entrega,
-            id_ubicacion,
-            id_usuario: req.id_usuario,
-            uri_img_1: '',
-            uri_img_2: '',
-            uri_img_3: '',
-            id_estatus: 1
+            name,
+            description,
+            price,
+            idDeliveryTime,
+            idLocation,
+            idUser: req.idUser,
+            img1: '',
+            img2: '',
+            img3: '',
+            idStatus: 1
         }
         const files = req.files;
 
@@ -45,20 +44,20 @@ const controladorProductos = {
                 return data
             })
             if (index == 0) {
-                const urlImg= urlDefault + uniqueName;
-                nuevoProducto.uri_img_1 = urlImg;
+                const urlImg = urlDefault + uniqueName;
+                nuevoProducto.img1 = urlImg;
             } else if (index == 1) {
                 const urlImg = urlDefault + uniqueName;
-                nuevoProducto.uri_img_2 = urlImg;
+                nuevoProducto.img2 = urlImg;
             } else if (index == 2) {
                 const urlImg = urlDefault + uniqueName;
-                nuevoProducto.uri_img_3 = urlImg;
+                nuevoProducto.img3 = urlImg;
             }
         }
 
 
         try {
-            pool.query("INSERT INTO productos set ?", [nuevoProducto])
+            pool.query("INSERT INTO products set ?", [nuevoProducto])
             return res.status(200).json({ mensaje: "Tu producto fue publicado correctamente", data: [] })
         } catch (error) {
             res.status(400).json({ mensaje: "Hubo un error al publicar tu producto", data: [] })
@@ -67,12 +66,11 @@ const controladorProductos = {
     },
 
     obtenerProductos: async (req, res) => {
-        console.log(req.id_usuario + "Esto es")
         try {
-            const data = await pool.query(`SELECT id_producto,nombre, precio_hora, precio_dia, productos.descripcion as descripcion,
-        tiempo_entrega.descripcion AS tiempo_entrega,municipio as ubicacion, productos.uri_img_1 from productos 
-        JOIN ubicacion ON ubicacion.id_ubicacion =  productos.id_ubicacion 
-        JOIN tiempo_entrega ON tiempo_entrega.id_tiempo_entrega = productos.id_tiempo_entrega WHERE productos.id_estatus=1; 
+            const data = await pool.query(`SELECT idProduct,name, price, products.description as description,
+        deliveryTime.description AS deliveryTime,city as location, products.img1 from products 
+        JOIN location ON location.idLocation =  products.idLocation 
+        JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime WHERE products.idStatus=1; 
         `);
             if (data.length > 0) {
                 res.status(200).json({ mensaje: "Estos son los productos", data: data })
@@ -87,14 +85,14 @@ const controladorProductos = {
         }
     },
     obtenerProductoUnico: async (req, res) => {
-        const { id_producto } = req.params;
-
+        const { idProduct } = req.params;
+console.log(idProduct)
         try {
-            const producto = await pool.query(`SELECT id_producto, nombre, precio_hora, precio_dia, productos.descripcion as descripcion,
-            tiempo_entrega.descripcion AS tiempo_entrega,municipio as ubicacion, uri_img_1,uri_img_2, uri_img_3 , id_usuario from productos 
-            JOIN ubicacion ON ubicacion.id_ubicacion =  productos.id_ubicacion 
-            JOIN tiempo_entrega ON tiempo_entrega.id_tiempo_entrega = productos.id_tiempo_entrega WHERE productos.id_producto = ${id_producto}`);
-            const infoUsuario = await pool.query(`SELECT nombre, apellido_paterno from usuarios WHERE id_usuario =${producto[0].id_usuario}`)
+            const producto = await pool.query(`SELECT idProduct, name, price, products.description as description,
+            deliveryTime.description AS deliveryTime,city as location, img1,img2, img3 , idUser from products 
+            JOIN location ON location.idLocation =  products.idLocation 
+            JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime WHERE products.idProduct = ${idProduct}`);
+            const infoUsuario = await pool.query(`SELECT firstName, lastName from users WHERE idUser =${producto[0].idUser}`)
             if (producto.length > 0) {
                 res.status(200).json({ mensaje: "Este es el producto", data: { producto: producto[0], infoUsuario: infoUsuario[0] } })
                 return
@@ -103,17 +101,19 @@ const controladorProductos = {
         } catch (error) {
             if (error == 0) {
                 res.status(400).json({ mensaje: "No hay productos para mostrar", data: [] })
+            } else{
+                console.error(error)
             }
         }
     },
     obtenerProductosDeUsuario: async (req, res) => {
-        const id_usuario = req.id_usuario;
+        const idUser = req.idUser;
         try {
-            const producto = await pool.query(`SELECT id_producto, nombre, precio_hora, precio_dia, productos.descripcion as descripcion,
-            tiempo_entrega.descripcion AS tiempo_entrega,municipio as ubicacion, uri_img, productos.id_estatus from productos 
-            JOIN ubicacion ON ubicacion.id_ubicacion =  productos.id_ubicacion 
-            JOIN tiempo_entrega ON tiempo_entrega.id_tiempo_entrega = productos.id_tiempo_entrega 
-            WHERE productos.id_usuario = ${id_usuario} AND id_estatus != 2 `);
+            const producto = await pool.query(`SELECT idProduct, name, price, products.description as description,
+            deliveryTime.description AS deliveryTime,city as location, img1, products.idStatus from products 
+            JOIN location ON location.idLocation =  products.idLocation 
+            JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime 
+            WHERE products.idUser = ${idUser} AND idStatus != 2 `);
 
             if (producto.length > 0) {
                 res.status(200).json({ mensaje: "Este es el producto", data: producto })
@@ -127,9 +127,9 @@ const controladorProductos = {
         }
     },
     pausarPublicacion: async (req, res) => {
-        const { id_producto } = req.params;
+        const { idProduct } = req.params;
         try {
-            await pool.query(`UPDATE productos SET id_estatus = 3 WHERE id_producto = ${id_producto}`);
+            await pool.query(`UPDATE products SET idStatus = 3 WHERE idProduct = ${idProduct}`);
             res.status(200).json({ mensaje: "Publicacion pausada", data: [] })
 
         } catch (error) {
@@ -139,10 +139,10 @@ const controladorProductos = {
         }
     },
     reanudarPublicacion: async (req, res) => {
-        const { id_producto } = req.params;
+        const { idProduct } = req.params;
         try {
-            await pool.query(`UPDATE productos SET id_estatus = 1 WHERE id_producto = ${id_producto}`);
-            res.status(200).json({ mensaje: "Publicacion pausada", data: [] })
+            await pool.query(`UPDATE products SET idStatus = 1 WHERE idProduct = ${idProduct}`);
+            res.status(200).json({ mensaje: "Publicacion publicada", data: [] })
 
         } catch (error) {
             if (error == 0) {
@@ -151,11 +151,23 @@ const controladorProductos = {
         }
     },
     eliminarPublicacion: async (req, res) => {
-        const { id_producto } = req.params;
+        const { idProduct } = req.params;
         try {
-            await pool.query(`UPDATE productos SET id_estatus = 2 WHERE id_producto = ${id_producto}`);
+            await pool.query(`UPDATE products SET idStatus = 2 WHERE idProduct = ${idProduct}`);
             res.status(200).json({ mensaje: "Publicacion eliminada", data: [] })
 
+        } catch (error) {
+            if (error == 0) {
+                res.json({ mensaje: "Hubo un error", data: [] })
+            }
+        }
+    },
+    filtrarProducto: async (req, res) => {
+        const idUser = req.idUser;
+        const { idEstatus } = req.params;
+        try {
+            const data = await pool.query(`SELECT * from products WHERE idStatus = ${idEstatus} AND idUser = ${idUser}`);
+            res.status(200).json({ mensaje: "Publicacion eliminada", data})
         } catch (error) {
             if (error == 0) {
                 res.json({ mensaje: "Hubo un error", data: [] })
