@@ -55,3 +55,35 @@ export const MockProductList = {
         }
     ]
 }
+
+export const mockProductDetails = {
+    title: "Producto 1",
+    description: "Cámara Canon EOS Rebel T3i - Kit 2EF. (incluye: Lente EF-S 18-55mm f/ 3.5 - 5.6 IS, Lente EF-75-300mm f/ 4 - 5.6, Ocular EF, Batería LP-E8, Cable de video AVC-DC400ST, Cable de interfaz USB IFC-130U).",
+    price: 40,
+    location: "Tecomán",
+    deliveryTime: "30-60min"
+}
+export const mockImagesPreview = {
+    images: ["https://rentamelo.s3.us-east-2.amazonaws.com/1626997143606", "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143637"],
+}
+
+export const mockProductView = {
+    product: {
+
+        idProduct: 60,
+        name: "Tablon ",
+        price: "30",
+        description: "Rento tablon de 2mts marca chida, sin nigun d",
+        deliveryTime: "0-30min",
+        location: "Tecomán",
+        img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626045224076",
+        img2: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143637",
+        img3: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143640",
+        idUser: 3
+    },
+    dataLessor: {
+        firstName: "Javier",
+        lastName: "Ruiz"
+    },
+    mainImg: "https://rentamelo.s3.us-east-2.amazonaws.com/1626045224076"
+}

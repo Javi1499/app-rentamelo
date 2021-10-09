@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Container } from 'components/Layout';
-import { ProductList, Filter, Carousel } from 'components';
+import { ProductList, Carousel } from 'components';
 
 const Home = () => {
     //  const { condicion } = useParams();

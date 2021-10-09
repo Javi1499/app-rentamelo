@@ -8,6 +8,10 @@ import { CustomInput } from './CustomInput'
 import { Select } from './Select'
 import { CustomInputFile } from './CustomFileInput'
 import { Form } from './Form'
+import { ProductDetails } from './ProductDetails';
+import { LessorInfo } from './LessorInfo'
+import { ImagesPreview } from './ImagesPreview'
+import ProductView from './ProductView'
 export {
     MyProduct,
     Button,
@@ -18,5 +22,9 @@ export {
     CustomInput,
     Select,
     CustomInputFile,
-    Form
+    Form,
+    ProductDetails,
+    LessorInfo,
+    ImagesPreview,
+    ProductView
 }
