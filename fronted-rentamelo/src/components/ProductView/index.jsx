@@ -1,4 +1,4 @@
-import { ImageComponent, ImagesPreview, LessorInfo, ProductDetails } from 'components';
+import { Button, ImageComponent, ImagesPreview, LessorInfo, ProductDetails } from 'components';
 import React, { useState } from 'react';
 import { ProductView, DetailsContainer, LessorContainer, ImageContainer, PreviewContainer, ButtonContainer, } from './styled';
 const Component = ({ product, dataLessor, mainImg }) => {
@@ -20,7 +20,7 @@ const Component = ({ product, dataLessor, mainImg }) => {
                 <LessorInfo dataLessor={dataLessor} />
             </LessorContainer>
             <ButtonContainer>
-                <button >RENTAR PRODUCTO</button>
+                <Button children={"RENTAR PRODUCTO"} />
             </ButtonContainer>
         </ProductView>
     );

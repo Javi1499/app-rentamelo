@@ -3,16 +3,17 @@ import styled from 'styled-components';
 export const ProductContainer = styled.div`
 display: grid;
 width: 250px;
-height: 380px;
+height: 400px;
 border-radius: 20px;
+box-sizing: border-box;
 padding: 16px;
 grid-template:
 "image image" 150px
-"title price" 50px
-"description description"auto
-"location controls " 32px
+"title title" 50px
+"description description"60px
+"controls price" 32px
 "button button"60px
-/60% 40%;
+/40% 60%;
 box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.2)
 `
 
@@ -26,7 +27,7 @@ margin-bottom: 8px;
 export const Title = styled.h2`
 grid-area: title;
 color: black;
-font-size: 18px;
+font-size: 20px;
 font-family: "Roboto-Bold";
 margin: 0;
 `
@@ -42,10 +43,10 @@ export const Price = styled.h2`
 display: inherit;
 grid-area: price;
 height: 100%;
-color: blue;
-font-size: 16px;
-text-align: center;
-font-family: "Roboto";
+color: #7A869E ;
+font-size: 24px;
+text-align: end;
+font-family: "Roboto-Bold";
 margin: 0;
 align-content: start;
 `
@@ -54,12 +55,22 @@ grid-area: controls;
 display: flex;
 
 `
-export const Icon = styled.div`
+const Icon = (component) => styled(component)`
 width: fit-content;
 height: fit-content;
 font-size: 24px;
 margin: 0 8px;
 `
+export const IconPause = Icon(styled.div`
+color: #007EC7;
+`);
+
+export const IconPlay = Icon(styled.div`
+color: #0CA113;
+`)
+export const IconDelete = Icon(styled.div`
+color: #A50202;
+`)
 export const Location = styled.h2`
 grid-area: location;
 color: black;
@@ -72,7 +83,7 @@ export const ButtonContainer = styled.div`
 display: flex;
 grid-area: button;
 justify-content: center;
-margin-top: 16px;
+margin: 16px 0 0 0;
 >button{
     width: 80%;
 }

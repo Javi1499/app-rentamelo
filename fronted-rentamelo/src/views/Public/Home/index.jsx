@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Container } from 'components/Layout';
-import { ProductList, Carousel } from 'components';
+import { ProductList, Carousel, CategoriesList } from 'components';
 
 const Home = () => {
     //  const { condicion } = useParams();
@@ -31,6 +31,7 @@ const Home = () => {
     return (
         <Container>
             <Carousel images={images} imageToShow={1} />
+            <CategoriesList />
             <ProductList productsData={productsData} change={change} setChange={setChange} />
         </Container>
     )

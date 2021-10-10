@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { CustomInput, CustomInputFile, Select } from 'components';
-import { arrayCity, arrayTime } from 'utils';
+import { arrayCategories, arrayCity, arrayTime } from 'utils';
 import axios from 'axios'
-import { FormContainer, InputName, InputDescription, InputPrice, InputTime, InputImage, Span } from './styled';
+import { FormContainer, InputName, InputDescription, InputPrice, InputTime, InputImage, Span, InputCategory } from './styled';
 const Component = () => {
     const { register, errors, handleSubmit } = useForm();
 
@@ -19,6 +19,7 @@ const Component = () => {
         data.append('idDeliveryTime', dataProduct.time)
         data.append('idLocation', dataProduct.location)
         data.append('price', dataProduct.price)
+        data.append('idCategory', dataProduct.category)
 
 
         console.log(data);
@@ -29,6 +30,7 @@ const Component = () => {
         });
         if (respuesta.status === 200) {
             console.log("TODO OK")
+            alert("Se agregó tu producto")
         } else {
             console.log("Error")
         }
@@ -53,6 +55,12 @@ const Component = () => {
                     {...register("description",)}
                 />
             </InputDescription>
+            <InputCategory>
+                <Select label={"Categoría de tu producto"}
+                    options={arrayCategories}
+                    {...register("category",)}
+                />
+            </InputCategory>
             <InputPrice>
                 <CustomInput
                     type="number"

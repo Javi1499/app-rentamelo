@@ -2,10 +2,12 @@
 import React from 'react';
 import { Form as Component } from 'components'
 import { MockMyProduct } from 'mocks'
-
+import { TemplateStyled } from 'utils';
 export default {
     title: 'rentamelo/Form',
     component: Component,
+    decorators: [TemplateStyled]
+
 };
 const Template = (args) => <Component{...args} />;
 

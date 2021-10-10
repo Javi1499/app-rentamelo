@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 import MyProducts from './views/Auth/MyProducts';
 import Home from './views/Public/Home';
 import AddProduct from 'views/Auth/AddProduct';
+import "./App.css"
 import ProductViewPage from 'views/Public/ProductView';
 //const url="http://localhost:3000"
 
@@ -17,7 +18,7 @@ function App() {
       <FontsProvider />
       <NavbarC />
       <FontsProvider />
-      <div className="container">
+      <div className="container justify-content-center" >
         <Switch>
           <PrivateRoute path="/agregar-producto" component={AddProduct} />
           <Route path="/producto/:idProduct" exact><ProductViewPage /></Route>

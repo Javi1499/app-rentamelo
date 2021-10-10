@@ -1,9 +1,8 @@
 import React from 'react';
-import { ProductDetails as Component } from 'components'
+import { CategoriesList as Component } from 'components'
 import { TemplateStyled } from 'utils';
-import { mockProductDetails } from 'mocks'
 export default {
-    title: 'rentamelo/ProductDetails',
+    title: 'rentamelo/CategoriesList',
     component: Component,
     decorators: [TemplateStyled]
 
@@ -11,4 +10,4 @@ export default {
 const Template = (args) => <Component{...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = mockProductDetails;
+

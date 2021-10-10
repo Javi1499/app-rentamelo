@@ -9,8 +9,7 @@ const Component = ({ dataProduct: { name, description, price, location, delivery
                 <Text>{description}</Text>
             </Description>
             <Price>
-                <Label>Precio de renta</Label>
-                <Text>${price}</Text>
+                <Text>${price} <span>por día de renta</span></Text>
             </Price>
             <Location>
                 <Label>Ubicación</Label>

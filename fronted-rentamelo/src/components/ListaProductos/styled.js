@@ -10,6 +10,7 @@ export const ProductList = styled.div`
     grid-gap: 16px;
     justify-items:center;
     margin: 1.5rem 0;
+    box-sizing: border-box;
 `;
 
 export const Product = styled.div`

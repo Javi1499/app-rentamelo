@@ -1,10 +1,12 @@
 import React from "react";
 import { Carousel as Component } from "components";
-
+import { TemplateStyled } from 'utils';
 
 export default {
   title: "rentamelo/Carousel",
   component: Component,
+  decorators: [TemplateStyled]
+
 };
 
 const Template = (args) => (

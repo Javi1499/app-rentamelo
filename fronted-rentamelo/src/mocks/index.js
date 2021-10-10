@@ -1,10 +1,13 @@
+import sports from "../assets/sports.png"
+
 export const MockMyProduct = {
-    producto: {
-        uri_img_1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626055011579", nombre: "Producto 1", descripcion: "Este es el producto lorem insup lorem insup lorem insup", id_producto: 2,
-        precio_dia: 13, ubicacion: "Tecoman"
+    dataProduct: {
+        img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626055011579", name: "Producto 1", description: "Este es el producto lorem insup lorem insup lorem insup", idProduct: 2,
+        price: 13, location: "Tecoman"
     },
-    cambio: 1,
-    setCambio: () => console.log("Hola")
+    isMyProduct: true,
+    setChange: () => console.log("hola"),
+    change: "change"
 }
 
 export const MockProductList = {
@@ -57,14 +60,17 @@ export const MockProductList = {
 }
 
 export const mockProductDetails = {
-    title: "Producto 1",
-    description: "Cámara Canon EOS Rebel T3i - Kit 2EF. (incluye: Lente EF-S 18-55mm f/ 3.5 - 5.6 IS, Lente EF-75-300mm f/ 4 - 5.6, Ocular EF, Batería LP-E8, Cable de video AVC-DC400ST, Cable de interfaz USB IFC-130U).",
-    price: 40,
-    location: "Tecomán",
-    deliveryTime: "30-60min"
+    dataProduct: {
+        title: "Producto 1",
+        description: "Cámara Canon EOS Rebel T3i - Kit 2EF. (incluye: Lente EF-S 18-55mm f/ 3.5 - 5.6 IS, Lente EF-75-300mm f/ 4 - 5.6, Ocular EF, Batería LP-E8, Cable de video AVC-DC400ST, Cable de interfaz USB IFC-130U).",
+        price: 40,
+        location: "Tecomán",
+        deliveryTime: "30-60min"
+    }
 }
 export const mockImagesPreview = {
     images: ["https://rentamelo.s3.us-east-2.amazonaws.com/1626997143606", "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143637"],
+    setMainImage: (e) => { console.log(e) }
 }
 
 export const mockProductView = {
@@ -86,4 +92,10 @@ export const mockProductView = {
         lastName: "Ruiz"
     },
     mainImg: "https://rentamelo.s3.us-east-2.amazonaws.com/1626045224076"
+}
+
+export const mockCategory = {
+    src: sports,
+    name: "Deportes",
+
 }

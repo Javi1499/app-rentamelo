@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   width: 100%;
-  letter-spacing: 0;
-  line-height: 23px;
+  height: 100%;
   text-align: center;
-  padding: 0.8em 0;
   cursor: pointer;
-  @media (max-width: 400px) {
-    width: 100%;
-  }
+  background-color: #108CFF;
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: "Roboto-Bold";
+  border: none;
+
 `;
 
 export default Button;

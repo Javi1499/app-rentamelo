@@ -3,7 +3,7 @@ import React from 'react';
 import { ImagesPreview, ImageContainer } from './styled';
 const Component = ({ images, setMainImage }) => {
 
-    const loadImages = images.map((image, index) => <ImageContainer onMouseOver={() => setMainImage(image)} key={`image-${index}`} onClick={() => setMainImage(image)}><ImageComponent src={image} /></ImageContainer>)
+    const loadImages = images.map((image, index) => image != null && <ImageContainer onMouseOver={() => setMainImage(image)} key={`image-${index}`} onClick={() => setMainImage(image)}><ImageComponent src={image} /></ImageContainer>)
     return (
         <ImagesPreview>
             <ImageComponent>

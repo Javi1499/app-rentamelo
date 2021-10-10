@@ -4,11 +4,12 @@ import axios from 'axios'
 import { faPause, faPlay, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ImageComponent, Button } from 'components'
-import { ImageContainer, ProductContainer, Price, Title, Description, Location, Controls, ButtonContainer, Icon } from './styled'
+import { ImageContainer, ProductContainer, Price, Title, Description, Location, Controls, ButtonContainer, Icon, IconPause, IconPlay, IconDelete } from './styled'
 import ReactTooltip from 'react-tooltip';
 const url = "http://localhost:3000"
 const urlServidor = "http://localhost:4006"
 const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
+    console.log(dataProduct)
     const pausarPublicacion = async () => {
         await axios.post(`${urlServidor}/productos/pausar-publicacion/${dataProduct.idProduct}`);
         setChange(!change);
@@ -38,7 +39,7 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
                     maxLine='2'
                 />
             </Description>
-            <Price >${price} x dia</Price>
+            <Price >${price} x día</Price>
             <Location >{ubicacion}</Location>
             <ButtonContainer>
                 <Button onClick={() => window.location.href = `${url}/producto/${idProduct}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
@@ -46,12 +47,12 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
             </ButtonContainer>
             {isMyProduct && <Controls>
                 {
-                    dataProduct.idStatus === "1" ? <Icon><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></Icon>
+                    dataProduct.idStatus === "1" ? <IconPause><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></IconPause>
                         :
-                        <Icon><FontAwesomeIcon data-tip="Reanudar publicacion" icon={faPlay} onClick={() => reanudarPublicacion()} /></Icon>
+                        <IconPlay><FontAwesomeIcon data-tip="Reanudar publicacion" icon={faPlay} onClick={() => reanudarPublicacion()} /></IconPlay>
 
                 }
-                <Icon><FontAwesomeIcon data-tip="Eliminar publicacion" icon={faTrash} onClick={() => eliminarPublicacion()} /></Icon>
+                <IconDelete><FontAwesomeIcon data-tip="Eliminar publicacion" icon={faTrash} onClick={() => eliminarPublicacion()} /></IconDelete>
                 <ReactTooltip place="top" type="dark" effect="solid" />
             </Controls>}
 

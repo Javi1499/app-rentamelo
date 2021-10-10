@@ -12,6 +12,8 @@ import { ProductDetails } from './ProductDetails';
 import { LessorInfo } from './LessorInfo'
 import { ImagesPreview } from './ImagesPreview'
 import ProductView from './ProductView'
+import { Category } from './Category'
+import { CategoriesList } from './CategoriesList'
 export {
     MyProduct,
     Button,
@@ -26,5 +28,7 @@ export {
     ProductDetails,
     LessorInfo,
     ImagesPreview,
-    ProductView
+    ProductView,
+    Category,
+    CategoriesList
 }
