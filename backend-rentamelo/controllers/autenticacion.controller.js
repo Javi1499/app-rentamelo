@@ -36,7 +36,7 @@ const controladorAutenticacion = {
             birthday,
             email,
             password,
-            estatus: 1
+            idStatus: 1
         }
 
         const emailVerificaction = await pool.query(`SELECT * FROM users WHERE email = "${email}"`)

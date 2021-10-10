@@ -7,7 +7,7 @@ const e = require("express");
 const controladorProductos = {
     agregarProducto: async (req, res) => {
         console.log("Entro")
-        const { name, description, price, idDeliveryTime, idLocation } = req.body;
+        const { name, description, price, idDeliveryTime, idLocation, idCategory } = req.body;
 
         const nuevoProducto = {
             name,
@@ -19,6 +19,7 @@ const controladorProductos = {
             img1: '',
             img2: '',
             img3: '',
+            idCategory,
             idStatus: 1
         }
         const files = req.files;
@@ -67,7 +68,7 @@ const controladorProductos = {
 
     obtenerProductos: async (req, res) => {
         try {
-            const data = await pool.query(`SELECT idProduct,name, price, products.description as description,
+            const data = await pool.query(`SELECT idProduct,name, price, idCategory, products.description as description,
         deliveryTime.description AS deliveryTime,city as location, products.img1 from products 
         JOIN location ON location.idLocation =  products.idLocation 
         JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime WHERE products.idStatus=1; 
@@ -88,7 +89,7 @@ const controladorProductos = {
         const { idProduct } = req.params;
 console.log(idProduct)
         try {
-            const producto = await pool.query(`SELECT idProduct, name, price, products.description as description,
+            const producto = await pool.query(`SELECT idProduct, name, price, idCategory, products.description as description,
             deliveryTime.description AS deliveryTime,city as location, img1,img2, img3 , idUser from products 
             JOIN location ON location.idLocation =  products.idLocation 
             JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime WHERE products.idProduct = ${idProduct}`);
@@ -109,7 +110,7 @@ console.log(idProduct)
     obtenerProductosDeUsuario: async (req, res) => {
         const idUser = req.idUser;
         try {
-            const producto = await pool.query(`SELECT idProduct, name, price, products.description as description,
+            const producto = await pool.query(`SELECT idProduct, name, price, idCategory, products.description as description,
             deliveryTime.description AS deliveryTime,city as location, img1, products.idStatus from products 
             JOIN location ON location.idLocation =  products.idLocation 
             JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime 
@@ -171,6 +172,26 @@ console.log(idProduct)
         } catch (error) {
             if (error == 0) {
                 res.json({ mensaje: "Hubo un error", data: [] })
+            }
+        }
+    },
+    filtrarCategoria: async (req, res) => {
+        const {idCategory} = req.params;
+        try {
+            const data = await pool.query(`SELECT idProduct,name, price, idCategory, products.description as description,
+        deliveryTime.description AS deliveryTime,city as location, products.img1 from products 
+        JOIN location ON location.idLocation =  products.idLocation 
+        JOIN deliveryTime ON deliveryTime.idDeliveryTime = products.idDeliveryTime WHERE products.idStatus=1 and idCategory = ${idCategory}; 
+        `);
+            if (data.length > 0) {
+                res.status(200).json({ mensaje: "Estos son los productos", data: data })
+                return
+            };
+            throw 0
+
+        } catch (error) {
+            if (error == 0) {
+                res.json({ mensaje: "No hay productos para mostrar", data: [] })
             }
         }
     }
