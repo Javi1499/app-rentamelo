@@ -62,7 +62,7 @@ helpers.obtenerHoraFinRenta = async( tiempoRenta)=>{
 let fechaInicio = moment();
 
 let fechaFinal = fechaInicio.clone();
-fechaFinal= fechaFinal.add(tiempoRenta, 'hours')
+fechaFinal= fechaFinal.add(tiempoRenta, 'days')
 
 const fechaString =(fechaFinal.format("DD/MM/YYYY HH:mm "))
 

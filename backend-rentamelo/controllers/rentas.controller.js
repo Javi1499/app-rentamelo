@@ -6,37 +6,37 @@ const moment = require('moment');
 const rentasController = {
     realizarRenta: async (req, res) => {
         console.log("Entro")
-        const id_usuario = req.id_usuario;
-        const { tiempoRenta, id_producto } = req.body;
-        console.log(req.body.datosRenta)
-        console.log(tiempoRenta, id_producto, id_usuario)
+        const idUser = req.idUser;
+        const { rentDays, idProduct } = req.body;
+        console.log(req.body)
+        console.log(rentDays, idProduct, idUser)
         try {
-            const infoProducto = await pool.query(`SELECT * FROM productos WHERE id_producto = ${id_producto}`);
+            const infoProducto = await pool.query(`SELECT * FROM products WHERE idProduct = ${idProduct}`);
             if (infoProducto.length < 1) {
                 throw 0
             }
-            if(infoProducto[0].id_usuario==id_usuario){
+            if(infoProducto[0].idUser==idUser){
                 throw 1
             }
 
             const nuevaRenta = {
-                id_producto,
-                id_usuario_arrendador: infoProducto[0].id_usuario,
-                id_usuario_arrendatario: id_usuario,
-                tiempo_renta_horas: tiempoRenta,
-                id_estatus: 6
+                idProduct,
+                idLesser: infoProducto[0].idUser,
+                idLessee: idUser,
+                rentDays: rentDays,
+                idStatus: 6
             }
             
-            await pool.query(`INSERT INTO rentas SET ?`, [nuevaRenta]);
-            await pool.query(`UPDATE productos SET id_estatus=5 WHERE id_producto = ${id_producto}`);
+            await pool.query(`INSERT INTO rents SET ?`, [nuevaRenta]);
+            await pool.query(`UPDATE products SET idStatus=5 WHERE idProduct = ${idProduct}`);
             res.status(200).json({ mensaje: "Renta procesada. En espera de confirmacion", data: [] })
         } catch (error) {
             if (error == 0) {
-                console.error(error)
-                res.status(400).json({ mensaje: "Hubo un error", data: [] })
+               
+                res.status(400).json({ mensaje: "El producto no existe", data: [] })
             } else if (error==1) {
                 console.error(error)
-                res.status(400).json({ mensaje: "No puedes rentarte un producto de tu propiedad", data: [] })
+                res.json({ status:402, mensaje: "No puedes rentarte un producto de tu propiedad", data: [] })
             } else{
                 console.error(error)
             }
@@ -44,20 +44,45 @@ const rentasController = {
       
     },
     confirmarRecepcion: async(req, res) =>{
-        const {id_renta} = req.params; 
-        const infoRenta = await pool.query(`SELECT tiempo_renta_horas from rentas WHERE id_renta = ${id_renta}`);
-        const tiempoRenta = Number(infoRenta[0].tiempo_renta_horas)  
-       const fechas= await helpers.obtenerHoraFinRenta(tiempoRenta);
+        console.log("entro")
+        const {idRent} = req.params; 
+        const infoRenta = await pool.query(`SELECT rentDays from rents WHERE idRent = ${idRent}`);
+        const rentDays = Number(infoRenta[0].rentDays)  
+       const fechas= await helpers.obtenerHoraFinRenta(rentDays);
     
        const tiemposRenta = {
-           fecha_Inicio:fechas.fechaInicio,
-           fecha_fin: fechas.fechaFinal,
-           id_estatus: 5
+           startDate:fechas.fechaInicio,
+           endDate: fechas.fechaFinal,
+           idStatus: 5
 
        }
-       await pool.query(`UPDATE rentas SET ? WHERE id_renta = ${id_renta}`, [tiemposRenta])
+       try {
+        await pool.query(`UPDATE rents SET ? WHERE idRent = ${idRent}`, [tiemposRenta])
 
-       res.status(200).json({mensaje:`Tu renta termina el ${fechas.msj}`, data:[]})
+        res.status(200).json({mensaje:`Tu renta termina el ${fechas.msj}`, data:[]})
+           
+       } catch (error) {
+           console.error(error)
+       }
+      
+    },
+    obtenerRentasArrendatario: async(req, res) =>{
+        console.log("entro")
+        const {idUser} = req
+       try {
+        const rents = await pool.query(`SELECT idRent, products.name AS name,products.idProduct AS idProduct, products.description AS description, 
+        users.firstName AS firstName, products.img1 as img1, users.lastName AS lastName, startDate, endDate, status.description AS status, rentDays from rents
+        JOIN products ON rents.idProduct = products.idProduct
+        JOIN users ON rents.idLesser = users.idUser
+        JOIN status ON rents.idStatus = status.idStatus WHERE idLessee = ${idUser}` )
+
+        res.status(200).json({mensaje:"Esto es", data:rents})
+           
+       } catch (error) {
+           console.error(error)
+           res.status(400).json({mensaje: "Hubo un error", data:[]})
+       }
+      
     }
 
 }
