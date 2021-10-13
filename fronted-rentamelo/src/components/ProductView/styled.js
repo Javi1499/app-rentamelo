@@ -14,6 +14,7 @@ export const ProductView = styled.div`
     /
     10% 40% 50%;
     padding: 16px;
+    
 `
 
 export const PreviewContainer = styled.div`

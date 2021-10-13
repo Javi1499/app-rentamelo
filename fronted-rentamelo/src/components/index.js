@@ -14,6 +14,13 @@ import { ImagesPreview } from './ImagesPreview'
 import ProductView from './ProductView'
 import { Category } from './Category'
 import { CategoriesList } from './CategoriesList'
+import { IncrementDecrement } from './IncrementDecrement'
+import { Modal } from './Modal'
+import { RentDetails } from './RentDetails'
+import { ProductDetailsCard } from './ProductDetailsCard'
+import { RentDetailsCard } from './RentDetailsCard'
+import { CardRent } from './CardRent'
+import { RentList } from './RentList'
 export {
     MyProduct,
     Button,
@@ -30,5 +37,12 @@ export {
     ImagesPreview,
     ProductView,
     Category,
-    CategoriesList
+    CategoriesList,
+    IncrementDecrement,
+    Modal,
+    RentDetails,
+    ProductDetailsCard,
+    RentDetailsCard,
+    CardRent,
+    RentList
 }

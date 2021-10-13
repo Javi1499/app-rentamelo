@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+display: flex;
+justify-content: center;
+`
 export const FormContainer = styled.form`
 display: flex;
 width: 500px;
@@ -14,7 +18,6 @@ border-radius: 10px;
 justify-content: space-between;
 `
 const Input = (component) => styled(component)`
-
 height: 75px;
 background-color: white;
 `;
@@ -37,3 +40,11 @@ export const InputTime = Input(styled.div`
 width: 100%;`);
 export const InputImage = Input(styled.div`
 width: 100%;`);
+
+export const ButtonContainer = styled.div`
+width: 100%;
+height: 48px;
+div>{
+    width: 70%;
+}
+`

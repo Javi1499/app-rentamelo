@@ -7,27 +7,33 @@ import SingUp from './components/SignUp';
 import PrivateRoute from './components/PrivateRoute';
 import MyProducts from './views/Auth/MyProducts';
 import Home from './views/Public/Home';
+import Rents from './views/Auth/Rents'
 import AddProduct from 'views/Auth/AddProduct';
 import "./App.css"
 import ProductViewPage from 'views/Public/ProductView';
+import RentDetailsPage from 'views/Auth/RentDetailsPage';
+import GlobalStyle, { Container } from 'style/Global';
 //const url="http://localhost:3000"
 
 function App() {
   return (
-    <Router >
+    <Router>
       <FontsProvider />
       <NavbarC />
       <FontsProvider />
-      <div className="container justify-content-center" >
-        <Switch>
-          <PrivateRoute path="/agregar-producto" component={AddProduct} />
-          <Route path="/producto/:idProduct" exact><ProductViewPage /></Route>
-          <Route path="/mis-productos" exact ><MyProducts /></Route>
-          <Route path="/login" exact component={Login} />
-          <Route path="/signup" exact component={SingUp} />
-          <Route path="/" exact component={Home} />
-        </Switch>
-      </div>
+      <GlobalStyle />
+      <Switch>
+        <PrivateRoute path="/agregar-producto" component={AddProduct} />
+        <PrivateRoute path="/producto/:idProduct" exact component={ProductViewPage}></PrivateRoute>
+        <PrivateRoute path="/mis-productos" exact component={MyProducts}></PrivateRoute>
+        <PrivateRoute path="/rentas" exact component={Rents}></PrivateRoute>
+        <PrivateRoute path="/detallesRenta/:idProduct/:rentDetails" exact component={RentDetailsPage}></PrivateRoute>
+        <Route path="/login" exact component={Login} />
+        <Route path="/signup" exact component={SingUp} />
+        <Route path="/" exact component={Home} />
+
+      </Switch>
+
     </Router>
 
 

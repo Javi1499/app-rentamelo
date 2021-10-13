@@ -4,9 +4,10 @@ export const ProductContainer = styled.div`
 display: grid;
 width: 250px;
 height: 400px;
-border-radius: 20px;
+border-radius: 8px;
 box-sizing: border-box;
 padding: 16px;
+background-color: white;
 grid-template:
 "image image" 150px
 "title title" 50px
@@ -14,7 +15,7 @@ grid-template:
 "controls price" 32px
 "button button"60px
 /40% 60%;
-box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.2)
+box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.2);
 `
 
 export const ImageContainer = styled.div`

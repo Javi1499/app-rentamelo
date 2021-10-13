@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 import { setToken, initAxiosIntterceptos } from '../helpers';
 initAxiosIntterceptos();
-const url="http://localhost:3000"
-const urlServidor = "http://localhost:4006"
+const url = "http://localhost:3000"
+// const urlServidor = "http://localhost:4006"
 const SingUp = () => {
     const [error, setError] = useState({ error: false, mensaje: "" });
     const [datosRegistro, setDatosRegistro] = useState({
@@ -34,12 +34,12 @@ const SingUp = () => {
             setError({ error: true, mensaje: "Todos los campos son obligatorios" });
             return
         } else {
-            const respuesta = await axios.post(`${urlServidor}/autenticacion/registro`, datosRegistro);
+            const respuesta = await axios.post(`/autenticacion/registro`, datosRegistro);
             if (respuesta.data.status === 200) {
                 setToken(respuesta.data.token);
-                window.location.href=`${url}/`
-                
-               
+                window.location.href = `${url}/`
+
+
             } else {
                 setError({ error: true, mensaje: respuesta.data.mensaje })
             }

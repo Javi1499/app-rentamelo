@@ -10,11 +10,6 @@ const ProductViewPage = () => {
     const [product, setProduct] = useState([]);
     const [dataLessor, setDataLessor] = useState([]);
 
-    const [datosRenta, setDatosRenta] = useState({
-        renta: 0,
-        tiempoRenta: 0,
-        idProduct: 79
-    });
 
     const obtenerInfoProducto = async () => {
         const res = await axios.get(`http://localhost:4006/productos/${idProduct}`);
@@ -22,9 +17,7 @@ const ProductViewPage = () => {
         setDataLessor(res.data.data.infoUsuario);
     }
 
-    const realizarRenta = async () => {
-        const res = await axios.post(`http://localhost:4006/rentas/realizar-renta`, datosRenta);
-    }
+
     useEffect(() => {
         obtenerInfoProducto();
     }, []);

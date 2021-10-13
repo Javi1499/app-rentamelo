@@ -99,3 +99,111 @@ export const mockCategory = {
     name: "Deportes",
 
 }
+export const mockRentDetails = {
+    dataProduct: {
+        idProduct: 60,
+        name: "Tablon ",
+        price: "30",
+        description: "Rento tablon de 2mts marca chida, sin nigun d",
+        deliveryTime: "0-30min",
+        location: "Tecomán",
+        img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626045224076",
+        img2: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143637",
+        img3: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143640",
+        idUser: 3
+    },
+    dataLessor: {
+        firstName: "Javier",
+        lastName: "Ruiz"
+    },
+    rentDetails: 5
+}
+
+export const mockProductDetailsCard = {
+    dataProduct: {
+        idProduct: 60,
+        name: "Tablon ",
+        price: "30",
+        description: "Rento tablon de 2mts marca chida, sin nigun d",
+        deliveryTime: "0-30min",
+        location: "Tecomán",
+        img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626045224076",
+        img2: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143637",
+        img3: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143640",
+        idUser: 3
+    },
+    rentDays: 5
+}
+
+export const mockRentDetailsCard = {
+    rentDetails: {
+        status: "Activa",
+        startDate: "12-12-2021",
+        endDate: "12-12-2021"
+    },
+    dataLessor: { firstName: "Javier", lastName: "Ruiz" }
+}
+export const mockCardRent = {
+    rentDetails: {
+        status: "Activa",
+        startDate: "12-12-2021",
+        endDate: "12-12-2021"
+    },
+    dataLessor: { firstName: "Javier", lastName: "Ruiz" },
+    dataProduct: {
+        idProduct: 60,
+        name: "Tablon ",
+        price: "30",
+        description: "Rento tablon de 2mts marca chida, sin nigun d",
+        deliveryTime: "0-30min",
+        location: "Tecomán",
+        img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626045224076",
+        img2: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143637",
+        img3: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143640",
+        idUser: 3
+    },
+    rentDays: 5
+
+}
+
+export const mockRentList = {
+    dataRents: [
+        {
+            idRent: 16,
+            name: "Cámara Canon Eos Rebel T3i",
+            description: "Cámara Canon EOS Rebel T3i - Kit 2EF. (incluye: Lente EF-S 18-55mm f/ 3.5 - 5.6 IS, Lente EF-75-300mm f/ 4 - 5.6, Ocular EF, Batería LP-E8, Cable de video AVC-DC400ST, Cable de interfaz USB IFC-130U).",
+            firstName: "Lizeth",
+            lastName: "Andrade",
+            startDate: null,
+            endDate: null,
+            status: "ESPERANDO CONFIRMACION",
+            rentDays: 2,
+            img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143606",
+        },
+        {
+            idRent: 17,
+            name: "Cámara Canon Eos Rebel T3i",
+            description: "Cámara Canon EOS Rebel T3i - Kit 2EF. (incluye: Lente EF-S 18-55mm f/ 3.5 - 5.6 IS, Lente EF-75-300mm f/ 4 - 5.6, Ocular EF, Batería LP-E8, Cable de video AVC-DC400ST, Cable de interfaz USB IFC-130U).",
+            firstName: "Lizeth",
+            lastName: "Andrade",
+            startDate: null,
+            endDate: null,
+            status: "ESPERANDO CONFIRMACION",
+            rentDays: 4,
+            img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143606"
+        },
+        {
+            idRent: 18,
+            name: "Sombrilla de playa",
+            description: "Rento sombrilla grande de playa",
+            firstName: "Lizeth",
+            lastName: "Andrade",
+            startDate: "2021-10-11 21:10",
+            endDate: "2021-10-16 21:10",
+            status: "EN PROCESO",
+            rentDays: 5,
+            img1: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143606"
+        },
+
+    ]
+}

@@ -4,9 +4,9 @@ import axios from 'axios'
 import { faPause, faPlay, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ImageComponent, Button } from 'components'
-import { ImageContainer, ProductContainer, Price, Title, Description, Location, Controls, ButtonContainer, Icon, IconPause, IconPlay, IconDelete } from './styled'
+import { ImageContainer, ProductContainer, Price, Title, Description, Location, Controls, ButtonContainer, IconPause, IconPlay, IconDelete } from './styled'
 import ReactTooltip from 'react-tooltip';
-const url = "http://localhost:3000"
+// const url = "http://localhost:3000"
 const urlServidor = "http://localhost:4006"
 const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
     console.log(dataProduct)
@@ -42,7 +42,7 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
             <Price >${price} x día</Price>
             <Location >{ubicacion}</Location>
             <ButtonContainer>
-                <Button onClick={() => window.location.href = `${url}/producto/${idProduct}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
+                <Button onClick={() => window.location.href = `/producto/${idProduct}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
 
             </ButtonContainer>
             {isMyProduct && <Controls>
