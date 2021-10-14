@@ -13,6 +13,7 @@ import "./App.css"
 import ProductViewPage from 'views/Public/ProductView';
 import RentDetailsPage from 'views/Auth/RentDetailsPage';
 import GlobalStyle, { Container } from 'style/Global';
+import RentsLesser from 'views/Auth/RentsLesser';
 //const url="http://localhost:3000"
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <PrivateRoute path="/producto/:idProduct" exact component={ProductViewPage}></PrivateRoute>
         <PrivateRoute path="/mis-productos" exact component={MyProducts}></PrivateRoute>
         <PrivateRoute path="/rentas" exact component={Rents}></PrivateRoute>
+        <PrivateRoute path="/rentas-arrendador" exact component={RentsLesser}></PrivateRoute>
         <PrivateRoute path="/detallesRenta/:idProduct/:rentDetails" exact component={RentDetailsPage}></PrivateRoute>
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={SingUp} />

@@ -16,6 +16,7 @@ grid-template:
 "button button"60px
 /40% 60%;
 box-shadow: 2px 1px 4px 3px rgba(0, 0, 0, 0.2);
+border: 1px solid #504F4FDC;
 `
 
 export const ImageContainer = styled.div`

@@ -207,3 +207,28 @@ export const mockRentList = {
 
     ]
 }
+
+export const mockAlert = {
+    information: "¿Ya tienes el producto?\ntu tiempo de renta comenzara ahora",
+    onClick: () => console.log("Si comenzar")
+}
+
+export const mockNavbarBase = {
+    items: [
+        {
+            name: "Todos",
+            value: 0
+        },
+        {
+            name: "En pausa",
+            value: 3
+        },
+        {
+            name: "En renta",
+            value: 5
+        },
+        {
+            name: "En espera de confirmación",
+            value: 6
+        }]
+}

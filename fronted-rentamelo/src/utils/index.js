@@ -20,9 +20,27 @@ export const arrayCategories =
 
 export const arrayTime = [{ value: 1, text: "Menos de 30min" }, { value: 2, text: "Entre 30-60min" }, { value: 3, text: "Mas de 60min" }];
 
+export const arrayFilter = [
+    {
+        name: "Todos",
+        value: 0
+    },
+    {
+        name: "En pausa",
+        value: 3
+    },
+    {
+        name: "En renta",
+        value: 5
+    },
+    {
+        name: "En espera de confirmación",
+        value: 6
+    }]
 export const TemplateStyled = (Story) => (
     <ThemeProvider theme={theme}>
         <Story />
         <FontsProvider />
     </ThemeProvider>
 )
+

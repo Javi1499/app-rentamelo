@@ -17,3 +17,17 @@ export const Product = styled.div`
 grid-column: span 1;
 `
 
+export const Title = styled.h1`
+font-size: 32px;
+font-family: "Roboto-Medium";
+width: 100%;
+text-align: center;
+`
+export const Span = styled.span`
+cursor: pointer;
+color: #0063B4;
+`
+export const TitleContainer = styled.div`
+width: 100%;
+height: fit-content;
+`

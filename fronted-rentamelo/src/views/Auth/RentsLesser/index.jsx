@@ -15,10 +15,14 @@ const Component = () => {
 
     }, [])
 
+    // const endRent = async()=>{
+    //     const res = await axios.post(`http://localhost:4006/rentas/finalizar-renta/${idRent}`)
+    // }
+
     return (
-        <RentList dataRents={rents} viewAs={false} />
+        <RentList dataRents={rents} viewAs={true} />
     );
 }
 
 export default Component;
-export { Component as Rents }
+export { Component as RentsLesser }

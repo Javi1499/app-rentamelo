@@ -4,7 +4,7 @@ export const RentDetails = styled.div`
 display: flex;
 flex-wrap: wrap;
 width: 300px;
-height: 180px;
+height: 200px;
 background-color: #A19F9FA6;
 border-radius: 0px 10px 10px 0px;
 padding: 8px;
@@ -31,6 +31,7 @@ justify-content: center;
 
 >button{
     width: 70%;
+    background-color: ${props => props.isInProgress ? "#108CFF" : "#FA4B4B"};
 }
 `
 

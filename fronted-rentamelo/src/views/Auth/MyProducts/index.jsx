@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Container } from 'components/Layout';
-import { ProductList, Filter } from 'components';
+import { ProductList, Filter, NavbarBase } from 'components';
+import { arrayFilter } from 'utils';
 
 const MyProducts = () => {
     //  const { condicion } = useParams();
@@ -27,7 +28,8 @@ const MyProducts = () => {
 
     return (
         <Container>
-            <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
+            <NavbarBase items={arrayFilter} filterValue={filterValue} setFilterValue={setFilterValue} />
+
             <ProductList productsData={productsData} change={change} setChange={setChange} isMyProduct={true} />
         </Container>
     )

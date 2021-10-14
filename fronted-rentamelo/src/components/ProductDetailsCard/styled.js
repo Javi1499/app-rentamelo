@@ -25,11 +25,13 @@ align-items: center;
 export const Title = styled.h2`
 grid-area: title;
 font-family: "Roboto-Bold";
+font-size: 26px;
 `
 
 export const Description = styled.p`
 grid-area: description;
 font-family: "Roboto";
+margin-top: 16px;
 `
 export const RentDays = styled.p`
 grid-area: rentDays;

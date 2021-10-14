@@ -13,11 +13,13 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
     const pausarPublicacion = async () => {
         await axios.post(`${urlServidor}/productos/pausar-publicacion/${dataProduct.idProduct}`);
         setChange(!change);
+        window.location.reload()
         return;
     }
     const reanudarPublicacion = async () => {
         await axios.post(`${urlServidor}/productos/reanudar-publicacion/${dataProduct.idProduct}`);
         setChange(!change);
+        window.location.reload()
         return;
     }
     const eliminarPublicacion = async () => {
@@ -25,8 +27,12 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
         setChange(!change);
         return;
     }
-    const { img1, name, description, idProduct, price, ubicacion } = dataProduct;
-    return (
+    const { img1, name, description, idProduct, price, ubicacion, idStatus } = dataProduct;
+
+    const isInRent = idStatus == 6 || idStatus == 5;
+
+    console.log(isInRent)
+    if (isMyProduct) return (
 
         <ProductContainer>
             <ImageContainer>
@@ -45,7 +51,7 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
                 <Button onClick={() => window.location.href = `/producto/${idProduct}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
 
             </ButtonContainer>
-            {isMyProduct && <Controls>
+            {!isInRent && <Controls>
                 {
                     dataProduct.idStatus === "1" ? <IconPause><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></IconPause>
                         :
@@ -59,6 +65,26 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
         </ProductContainer>
 
     );
+    return (
+        <ProductContainer>
+            <ImageContainer>
+                <ImageComponent src={img1} />
+            </ImageContainer>
+            <Title>{name}</Title>
+            <Description>
+                <LinesEllipsis
+                    text={description}
+                    maxLine='2'
+                />
+            </Description>
+            <Price >${price} x día</Price>
+            <Location >{ubicacion}</Location>
+            <ButtonContainer>
+                <Button onClick={() => window.location.href = `/producto/${idProduct}`} children={`${isMyProduct ? "Ver publicación" : "Ver detalles"}`} />
+
+            </ButtonContainer>
+        </ProductContainer>
+    )
 }
 
 

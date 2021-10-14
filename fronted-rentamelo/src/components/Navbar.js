@@ -13,7 +13,7 @@ const NavbarC = () => {
           <Nav className="mr-auto">
             <Nav.Link href={`/`} >Inicio</Nav.Link>
             <Nav.Link href={`/agregar-producto`}>Agregar producto</Nav.Link>
-            <NavDropdown title="Tu cuenta" id="basic-nav-dropdown">
+            <NavDropdown title="Mi cuenta" id="basic-nav-dropdown">
               <NavDropdown.Item href={`/mis-productos`}>Mis productos</NavDropdown.Item>
               <NavDropdown.Item href="/rentas">Mis Rentas </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Mis datos</NavDropdown.Item>

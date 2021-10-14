@@ -21,6 +21,8 @@ import { ProductDetailsCard } from './ProductDetailsCard'
 import { RentDetailsCard } from './RentDetailsCard'
 import { CardRent } from './CardRent'
 import { RentList } from './RentList'
+import { Alert } from './Alert'
+import { NavbarBase } from './NavbarBase'
 export {
     MyProduct,
     Button,
@@ -44,5 +46,7 @@ export {
     ProductDetailsCard,
     RentDetailsCard,
     CardRent,
-    RentList
+    RentList,
+    Alert,
+    NavbarBase
 }
