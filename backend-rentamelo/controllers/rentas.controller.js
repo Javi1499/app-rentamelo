@@ -29,7 +29,7 @@ const rentasController = {
             }
             
             await pool.query(`INSERT INTO rents SET ?`, [nuevaRenta]);
-            await pool.query(`UPDATE products SET idStatus=5 WHERE idProduct = ${idProduct}`);
+            await pool.query(`UPDATE products SET idStatus=6 WHERE idProduct = ${idProduct}`);
             res.status(200).json({ mensaje: "Renta procesada. En espera de confirmacion", data: [] })
         } catch (error) {
             if (error == 0) {
@@ -93,7 +93,7 @@ const rentasController = {
         const rents = await pool.query(`SELECT idRent, products.name AS name,products.idProduct AS idProduct, products.description AS description, 
         users.firstName AS firstName, rents.idRent as idRent, rents.idStatus  as idStatus,  products.img1 as img1, users.lastName AS lastName, startDate, endDate, status.description AS status, rentDays from rents
         JOIN products ON rents.idProduct = products.idProduct
-        JOIN users ON rents.idLesser = users.idUser
+        JOIN users ON rents.idLessee = users.idUser
         JOIN status ON rents.idStatus = status.idStatus WHERE idLesser = ${idUser}` )
 
         res.status(200).json({mensaje:"Esto es", data:rents})
@@ -117,6 +117,25 @@ const rentasController = {
         await pool.query(`UPDATE products SET idStatus= 3 WHERE idProduct = ${rent[0].idProduct}`)
 
         res.status(200).json({mensaje:"Renta finalizada", data:[]})
+           
+       } catch (error) {
+           console.error(error)
+           res.status(400).json({mensaje: "Hubo un error", data:[]})
+       }
+      
+    },
+    validarRentaPropia: async(req, res) =>{
+        console.log("entro")
+        const {idProduct} = req.params;
+        const {idUser} = req;
+       try {
+        //Se obtienen dastos de la renta
+        const rent = await pool.query(`SELECT * FROM products WHERE idUser = ${idUser} AND idProduct=${idProduct}`);
+        if(rent.length>0){
+            res.status(200).json({mensaje:true, data:[]})
+        } else{
+            res.status(200).json({mensaje:false, data:[]})
+        }
            
        } catch (error) {
            console.error(error)
