@@ -1,6 +1,7 @@
 const pool = require("../models/connection");
 const helpers = require('../lib/helpers');
 const moment = require('moment');
+const { query } = require("express");
 //const jtw = require("jsonwebtoken");
 
 const rentasController = {
@@ -71,12 +72,51 @@ const rentasController = {
         const {idUser} = req
        try {
         const rents = await pool.query(`SELECT idRent, products.name AS name,products.idProduct AS idProduct, products.description AS description, 
-        users.firstName AS firstName, products.img1 as img1, users.lastName AS lastName, startDate, endDate, status.description AS status, rentDays from rents
+        users.firstName AS firstName, rents.idRent as idRent, rents.idStatus  as idStatus,  products.img1 as img1, users.lastName AS lastName, startDate, 
+        endDate, status.description AS status, rentDays from rents
         JOIN products ON rents.idProduct = products.idProduct
         JOIN users ON rents.idLesser = users.idUser
         JOIN status ON rents.idStatus = status.idStatus WHERE idLessee = ${idUser}` )
 
         res.status(200).json({mensaje:"Esto es", data:rents})
+           
+       } catch (error) {
+           console.error(error)
+           res.status(400).json({mensaje: "Hubo un error", data:[]})
+       }
+      
+    },
+    obtenerRentasArrendador: async(req, res) =>{
+        console.log("entro")
+        const {idUser} = req
+       try {
+        const rents = await pool.query(`SELECT idRent, products.name AS name,products.idProduct AS idProduct, products.description AS description, 
+        users.firstName AS firstName, rents.idRent as idRent, rents.idStatus  as idStatus,  products.img1 as img1, users.lastName AS lastName, startDate, endDate, status.description AS status, rentDays from rents
+        JOIN products ON rents.idProduct = products.idProduct
+        JOIN users ON rents.idLesser = users.idUser
+        JOIN status ON rents.idStatus = status.idStatus WHERE idLesser = ${idUser}` )
+
+        res.status(200).json({mensaje:"Esto es", data:rents})
+           
+       } catch (error) {
+           console.error(error)
+           res.status(400).json({mensaje: "Hubo un error", data:[]})
+       }
+      
+    },
+    finalizarRenta: async(req, res) =>{
+        console.log("entro")
+        const {idRent} = req.params;
+       try {
+        //Se obtienen dastos de la renta
+        const rent = await pool.query(`SELECT * FROM rents WHERE idRent = ${idRent}`);
+
+        //Se cambia el estatus a finalizado
+        await pool.query(`UPDATE rents SET idStatus=7 WHERE idRent = ${idRent} `)
+        //Se pone el producto en pausa
+        await pool.query(`UPDATE products SET idStatus= 3 WHERE idProduct = ${rent[0].idProduct}`)
+
+        res.status(200).json({mensaje:"Renta finalizada", data:[]})
            
        } catch (error) {
            console.error(error)
