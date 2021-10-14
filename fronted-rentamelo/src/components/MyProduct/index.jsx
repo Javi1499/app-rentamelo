@@ -53,7 +53,7 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
             </ButtonContainer>
             {!isInRent && <Controls>
                 {
-                    dataProduct.idStatus === "1" ? <IconPause><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></IconPause>
+                    dataProduct.idStatus === 1 ? <IconPause><FontAwesomeIcon data-tip="Pausar publicacion" icon={faPause} onClick={() => pausarPublicacion()} /></IconPause>
                         :
                         <IconPlay><FontAwesomeIcon data-tip="Reanudar publicacion" icon={faPlay} onClick={() => reanudarPublicacion()} /></IconPlay>
 

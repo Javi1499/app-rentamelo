@@ -62,6 +62,7 @@ width: fit-content;
 height: fit-content;
 font-size: 24px;
 margin: 0 8px;
+cursor: pointer;
 `
 export const IconPause = Icon(styled.div`
 color: #007EC7;

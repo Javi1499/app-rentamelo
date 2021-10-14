@@ -31,7 +31,7 @@ export const arrayFilter = [
     },
     {
         name: "En renta",
-        value: 5
+        value: 4
     },
     {
         name: "En espera de confirmación",

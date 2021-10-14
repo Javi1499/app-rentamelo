@@ -9,6 +9,7 @@ const Component = () => {
     const alertMessage = `¿Confirmas que haz recibido el producto de regreso correctamente?`;
     const getRents = async () => {
         const res = await axios.get(`http://localhost:4006/rentas/arrendador`);
+        console.log(res.data.data)
         setRents(res.data.data);
     }
     useEffect(() => {

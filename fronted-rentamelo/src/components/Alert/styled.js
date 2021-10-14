@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+display: flex;
+width: 100vw;
+height: 100vh;
+position: fixed;
+justify-content: center;
+align-items: center;
+align-content: center;
+background-color: #090A0AB7;
+`
 export const Alert = styled.div`
 display: flex;
 width: 450px;

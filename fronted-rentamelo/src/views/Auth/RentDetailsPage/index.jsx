@@ -8,6 +8,7 @@ const Component = () => {
     const { rentDetails } = useParams();
     const [product, setProduct] = useState([]);
     const [dataLessor, setDataLessor] = useState([]);
+    const [showAlert, setShowAlert] = useState(false)
     const [rentData, setRentData] = useState({
 
         idProduct: 0,
