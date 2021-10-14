@@ -2,21 +2,8 @@ import React, { useState } from 'react';
 import { Alert, CardRent } from 'components';
 import { RentList, Rent, Wrapper, Title } from './styled'
 import axios from 'axios';
-const Component = ({ dataRents, viewAs }) => {
+const Component = ({ dataRents, viewAs, idRentSelected, setIdRentSelected, onClick, showAlert, setShowAlert, alertMessage }) => {
     const dataVerify = dataRents.length > 0;
-    const [idRentSelected, setIdRentSelected] = useState(0);
-    const [showAlert, setShowAlert] = useState(false)
-    const rentStart = async idRent => {
-        console.log("Me clickeo")
-        setShowAlert(false);
-        const res = await axios.post(`http://localhost:4006/rentas/confirmar-recepcion/${idRent}`)
-
-        if (res.status == 200) {
-            console.log(res)
-            alert(`${res.data.mensaje}`)
-            window.location.reload()
-        }
-    }
 
 
     const showAlertConfirmation = idRent => {
@@ -27,7 +14,7 @@ const Component = ({ dataRents, viewAs }) => {
     return (
         <Wrapper>
             <Title>{viewAs ? "Historial de rentas de tus productos" : "Historial de rentas realizadas"}</Title>
-            {showAlert && <Alert information={`¿Ya tienes el producto?\ntu tiempo de renta comenzara ahora`} onClick={() => rentStart(idRentSelected)} setShowAlert={setShowAlert} />}
+            {showAlert && <Alert information={alertMessage} onClick={onClick} setShowAlert={setShowAlert} />}
             <RentList>
                 {dataVerify ? null : <div><h1>No has rentado ningun producto</h1> <a href="/">hazlo ahora</a></div>}
 

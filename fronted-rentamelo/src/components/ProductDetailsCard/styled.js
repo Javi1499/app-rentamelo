@@ -28,7 +28,7 @@ font-family: "Roboto-Bold";
 font-size: 26px;
 `
 
-export const Description = styled.p`
+export const Description = styled.div`
 grid-area: description;
 font-family: "Roboto";
 margin-top: 16px;

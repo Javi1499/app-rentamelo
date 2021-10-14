@@ -13,7 +13,7 @@ const Component = ({ rentDetails: { status, startDate, endDate, idStatus }, data
             </Section>
             <Section><Span>{"Arrendatario"}: </Span>{`${firstName} ${lastName}`}</Section>
 
-            {rentInProgress && <ButtonContainer isInProgress={rentInProgress} >
+            {rentInProgress && <ButtonContainer isInProgress={false} >
                 <Button children={`"Finalizar renta`} onClick={rentStart} />
             </ButtonContainer>}
 
