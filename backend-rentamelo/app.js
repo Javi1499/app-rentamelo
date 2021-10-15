@@ -19,10 +19,12 @@ app.use(express.urlencoded({extended:false}))
  const autenticacionRouter = require("./routes/autenticacion.routes");
  const productosRouter = require("./routes/productos.routes");
  const rentasRouter = require("./routes/rentas.routes")
+ const userRouter = require("./routes/user.routes")
 // const autenticacion = require("./routes/login.routes");
 app.use("/autenticacion",autenticacionRouter);
 app.use("/productos", productosRouter);
 app.use("/rentas", rentasRouter);
+app.use("/usuarios", userRouter);
 
 //arrancar server
 app.listen(app.get('port'), ()=>{
