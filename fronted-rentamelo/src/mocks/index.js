@@ -232,3 +232,13 @@ export const mockNavbarBase = {
             value: 6
         }]
 }
+
+export const mockProfile = {
+    userData: {
+        firstName: "Javier",
+        lastName: "Ruiz",
+        phoneNumber: "313-15-0580",
+        email: "fruiz1@ucol.mx",
+        img: "https://rentamelo.s3.us-east-2.amazonaws.com/1626997143606"
+    }
+}

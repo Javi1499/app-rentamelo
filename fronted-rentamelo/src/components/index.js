@@ -23,6 +23,7 @@ import { CardRent } from './CardRent'
 import { RentList } from './RentList'
 import { Alert } from './Alert'
 import { NavbarBase } from './NavbarBase'
+import { Profile } from './Profile'
 export {
     MyProduct,
     Button,
@@ -48,5 +49,6 @@ export {
     CardRent,
     RentList,
     Alert,
-    NavbarBase
+    NavbarBase,
+    Profile
 }

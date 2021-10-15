@@ -3,7 +3,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "components";
 import { Alert, Information, ButtonContainer, Icon, Wrapper } from './styled';
-const Component = ({ information, onClick, setShowAlert }) => {
+const Component = ({ information, onClick, setShowAlert, buttonIsRequired }) => {
 
     return (
         <Wrapper>
@@ -12,9 +12,10 @@ const Component = ({ information, onClick, setShowAlert }) => {
                     <FontAwesomeIcon icon={faTimes} />
                 </Icon>
                 <Information>{information}</Information>
-                <ButtonContainer>
+                {buttonIsRequired && <ButtonContainer>
                     <Button children={"Aceptar"} onClick={onClick} />
-                </ButtonContainer>
+                </ButtonContainer>}
+
             </Alert>
         </Wrapper>
     );

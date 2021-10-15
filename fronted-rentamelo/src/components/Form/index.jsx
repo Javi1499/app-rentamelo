@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Button, CustomInput, CustomInputFile, Select } from 'components';
+import { Alert, Button, CustomInput, CustomInputFile, Select } from 'components';
 import { arrayCategories, arrayCity, arrayTime } from 'utils';
 import axios from 'axios'
 import { FormContainer, InputName, InputDescription, InputPrice, InputTime, InputImage, Span, InputCategory, ButtonContainer, Wrapper } from './styled';
 const Component = () => {
+    const [showAlert, setShowAlert] = useState(false)
     const { register, errors, handleSubmit } = useForm();
 
     const onSubmit = async (dataProduct, e) => {
@@ -30,7 +31,11 @@ const Component = () => {
         });
         if (respuesta.status === 200) {
             console.log("TODO OK")
-            alert("Se agregó tu producto")
+            setTimeout(() => {
+                setShowAlert(false);
+                window.location.href = "/mis-productos"
+            }, 4000)
+            setShowAlert(true)
         } else {
             alert("error")
             return;
@@ -39,6 +44,7 @@ const Component = () => {
     };
     return (
         <Wrapper>
+            {showAlert && <Alert information={"Producto agregado correctamente"} onClick={() => setShowAlert(false)} setShowAlert={() => { setShowAlert(false); window.location.href = "/mis-productos" }} />}
             <FormContainer onSubmit={handleSubmit(onSubmit)}  >
                 <InputName>
                     <CustomInput

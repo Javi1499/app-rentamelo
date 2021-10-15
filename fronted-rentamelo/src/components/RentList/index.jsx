@@ -14,7 +14,7 @@ const Component = ({ dataRents, viewAs, idRentSelected, setIdRentSelected, onCli
     return (
         <Wrapper>
             <Title>{viewAs ? "Historial de rentas de tus productos" : "Historial de rentas realizadas"}</Title>
-            {showAlert && <Alert information={alertMessage} onClick={onClick} setShowAlert={setShowAlert} />}
+            {showAlert && <Alert information={alertMessage} onClick={onClick} setShowAlert={setShowAlert} buttonIsRequired />}
             <RentList>
                 {dataVerify ? null : <div><h1>No has rentado ningun producto</h1> <a href="/">hazlo ahora</a></div>}
 

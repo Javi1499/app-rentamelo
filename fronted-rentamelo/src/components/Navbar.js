@@ -16,7 +16,7 @@ const NavbarC = () => {
             <NavDropdown title="Mi cuenta" id="basic-nav-dropdown">
               <NavDropdown.Item href={`/mis-productos`}>Mis productos</NavDropdown.Item>
               <NavDropdown.Item href="/rentas">Mis Rentas </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Mis datos</NavDropdown.Item>
+              <NavDropdown.Item href="/perfil">Mis datos</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href={`/login`} onClick={() => deleteToken()}>Cerrar sesion</NavDropdown.Item>
             </NavDropdown>
