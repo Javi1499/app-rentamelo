@@ -28,7 +28,7 @@ const Component = () => {
         setShowAlert(false);
         const res = await axios.post(`http://localhost:4006/rentas/confirmar-recepcion/${idRent}`)
 
-        if (res.status == 200) {
+        if (res.status === 200) {
             setShowAlert2({ message: res.data.mensaje, status: true })
 
             setTimeout(() => window.location.reload(), 4000)

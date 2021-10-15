@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Container } from 'components/Layout';
-import { ProductList, Filter, NavbarBase } from 'components';
+import { ProductList, NavbarBase } from 'components';
 import { arrayFilter } from 'utils';
 
 const MyProducts = () => {
@@ -12,7 +12,7 @@ const MyProducts = () => {
     const [filterValue, setFilterValue] = useState(0);
     const obtenerInfo = async () => {
 
-        if (filterValue != 0) {
+        if (filterValue !== 0) {
             const productos = await axios.post(`http://localhost:4006/productos/filtro/${filterValue}`);
             setProductsData(productos.data.data);
             return;

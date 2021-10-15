@@ -1,6 +1,6 @@
 import React from 'react';
 import MiProducto from '../MyProduct'
-import { Product, ProductList, Span, Title, TitleContainer } from './styled'
+import { Product, ProductList, Title, TitleContainer } from './styled'
 const Component = (props) => {
     const { productsData, change, setChange, isMyProduct } = props;
     const dataVerify = productsData.length > 0;

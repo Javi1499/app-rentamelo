@@ -8,7 +8,6 @@ const Component = () => {
     const { rentDetails } = useParams();
     const [product, setProduct] = useState([]);
     const [dataLessor, setDataLessor] = useState([]);
-    const [showAlert, setShowAlert] = useState(false)
     const [rentData, setRentData] = useState({
 
         idProduct: 0,
@@ -27,7 +26,7 @@ const Component = () => {
 
     const realizarRenta = async () => {
         const res = await axios.post(`http://localhost:4006/rentas/realizar-renta`, rentData);
-        if (res.status == 200) {
+        if (res.status === 200) {
             window.location.href = "/rentas"
         } else {
             alert("No puedes rentar un producto tuyo")

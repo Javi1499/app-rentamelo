@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, ImageComponent, ImagesPreview, LessorInfo, Modal, ProductDetails, Alert } from 'components';
 import axios from 'axios'
 import { ProductView, DetailsContainer, LessorContainer, ImageContainer, PreviewContainer, ButtonContainer, } from './styled';
-import { validate } from 'schema-utils';
+
 const Component = ({ product, dataLessor, mainImg }) => {
     const [mainImage, setMainImage] = useState(mainImg);
     const [showModal, setShowModal] = useState(false)

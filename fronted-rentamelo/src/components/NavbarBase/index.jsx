@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavbarBase, Item } from './styled';
 const Component = ({ items, filterValue, setFilterValue }) => {
 
-    const renderItems = items.map((item, index) => <Item key={`${index}-item`} isSelect={item.value == filterValue} onClick={() => setFilterValue(item.value)}>{item.name}</Item>)
+    const renderItems = items.map((item, index) => <Item key={`${index}-item`} isSelect={item.value === filterValue} onClick={() => setFilterValue(item.value)}>{item.name}</Item>)
 
     return (
         <NavbarBase>

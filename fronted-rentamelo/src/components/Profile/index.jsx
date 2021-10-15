@@ -1,5 +1,4 @@
 import React from 'react';
-import { ImageComponent } from 'components';
 import { Profile, ImageContainer, Section, Span, InformationContainer, Wrapper, NameImage, ButtonContainer } from './styled';
 import Button from 'components/Button';
 const Component = ({ userData: { firstName, lastName, phoneNumber, email } }) => {

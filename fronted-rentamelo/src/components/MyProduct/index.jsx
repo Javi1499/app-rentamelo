@@ -29,7 +29,7 @@ const MyProduct = ({ dataProduct, change, setChange, isMyProduct }) => {
     }
     const { img1, name, description, idProduct, price, ubicacion, idStatus } = dataProduct;
 
-    const isInRent = idStatus == 6 || idStatus == 5;
+    const isInRent = idStatus === 6 || idStatus === 5;
 
     console.log(isInRent)
     if (isMyProduct) return (

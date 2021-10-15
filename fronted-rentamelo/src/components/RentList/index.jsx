@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Alert, CardRent } from 'components';
-import { RentList, Rent, Wrapper, Title } from './styled'
-import axios from 'axios';
+import { RentList, Rent, Wrapper, Title } from './styled';
 const Component = ({ dataRents, viewAs, idRentSelected, setIdRentSelected, onClick, showAlert, setShowAlert, alertMessage }) => {
     const dataVerify = dataRents.length > 0;
 

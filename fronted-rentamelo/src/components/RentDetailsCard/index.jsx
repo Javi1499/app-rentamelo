@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from "components";
 import { RentDetails, Section, Span, ButtonContainer, Date } from './styled';
 const Component = ({ rentDetails: { status, startDate, endDate, idStatus }, dataLessor: { firstName, lastName, viewAs }, rentStart }) => {
-    const isWaitingConfirmation = idStatus == 6;
-    const rentInProgress = idStatus == 5;
+    const isWaitingConfirmation = idStatus === 6;
+    const rentInProgress = idStatus === 5;
     if (viewAs) return (
         <RentDetails>
             <Section><Span>Estatus: </Span>{status}</Section>
@@ -14,7 +14,7 @@ const Component = ({ rentDetails: { status, startDate, endDate, idStatus }, data
             <Section><Span>{"Arrendatario"}: </Span>{`${firstName} ${lastName}`}</Section>
 
             {rentInProgress && <ButtonContainer isInProgress={false} >
-                <Button children={`"Finalizar renta`} onClick={rentStart} />
+                <Button children={`Finalizar renta`} onClick={rentStart} />
             </ButtonContainer>}
 
         </RentDetails>
