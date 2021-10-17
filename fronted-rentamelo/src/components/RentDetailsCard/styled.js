@@ -5,7 +5,7 @@ display: flex;
 flex-wrap: wrap;
 width: 300px;
 height: 200px;
-background-color: #A19F9FA6;
+background-color:${props => props.idStatus !== 7 ? `${props.idStatus === 5 ? "#4BDB57C7" : "#4BA6DBB9"}` : "#A19F9FA6"} ;
 border-radius: 0px 10px 10px 0px;
 padding: 8px;
 box-sizing: border-box;

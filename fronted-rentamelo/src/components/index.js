@@ -24,6 +24,8 @@ import { RentList } from './RentList'
 import { Alert } from './Alert'
 import { NavbarBase } from './NavbarBase'
 import { Profile } from './Profile'
+import { SignUp } from './SignUp'
+import { Login } from './Login'
 export {
     MyProduct,
     Button,
@@ -50,5 +52,7 @@ export {
     RentList,
     Alert,
     NavbarBase,
-    Profile
+    Profile,
+    SignUp,
+    Login
 }

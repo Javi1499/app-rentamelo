@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import SignUp from './SignUp'
-import Login from './Login'
+import React, { useState } from 'react';
+import SignUp from 'components'
+import Login from 'components'
 import { Row } from 'react-bootstrap';
 const Autenticacion = () => {
     const [estaRegistrado, setEstaRegistrado] = useState(true);
@@ -8,11 +8,11 @@ const Autenticacion = () => {
         <Row>
             {estaRegistrado ?
                 <Login
-                setEstaRegistrado={setEstaRegistrado}
+                    setEstaRegistrado={setEstaRegistrado}
                 />
                 :
                 <SignUp
-                setEstaRegistrado={setEstaRegistrado}
+                    setEstaRegistrado={setEstaRegistrado}
                 />
             }
         </Row>

@@ -5,6 +5,7 @@ display: flex;
 width: 100vw;
 height: fit-content;
 justify-content: center;
+margin-top: 16px;
 `
 export const Profile = styled.div`
 display: flex;

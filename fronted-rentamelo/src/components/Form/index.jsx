@@ -44,7 +44,9 @@ const Component = () => {
     };
     return (
         <Wrapper>
-            {showAlert && <Alert information={"Producto agregado correctamente"} onClick={() => setShowAlert(false)} setShowAlert={() => { setShowAlert(false); window.location.href = "/mis-productos" }} />}
+            {showAlert && <Alert information={"Producto agregado correctamente"}
+                onClick={() => setShowAlert(false)}
+                setShowAlert={() => { setShowAlert(false); window.location.href = "/mis-productos" }} />}
             <FormContainer onSubmit={handleSubmit(onSubmit)}  >
                 <InputName>
                     <CustomInput

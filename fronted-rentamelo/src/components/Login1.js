@@ -3,17 +3,17 @@ import axios from 'axios';
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 import { setToken, initAxiosIntterceptos } from '../helpers';
 initAxiosIntterceptos();
-const url="http://localhost:3000"
+const url = "http://localhost:3000"
 const urlServidor = "http://localhost:4006"
-const Login = () => {
-   // const [estaRegistrado, setEstaRegistrado] = useState(true);
+const Login1 = () => {
+    // const [estaRegistrado, setEstaRegistrado] = useState(true);
     const [error, setError] = useState({ error: false, mensaje: "" });
     const [datosLogin, setDatosLogin] = useState({
         email: "",
         password: ""
     });
 
-    
+
 
     //Se actualiz el state con los datos ingresados 
     const actualizarState = e => {
@@ -35,7 +35,7 @@ const Login = () => {
             const respuesta = await axios.post(`${urlServidor}/autenticacion/login`, datosLogin);
             if (respuesta.data.status === 200) {
                 setToken(respuesta.data.token);
-                window.location.href=`${url}/`
+                window.location.href = `${url}/`
                 // if (respuesta.data.data.rol === "admin") {
                 //     localStorage.setItem('admin', true);
                 //     setError({ error: false })
@@ -50,7 +50,7 @@ const Login = () => {
         <Fragment >
             <Container>
                 <Row className="justify-content-center">
-                <Col className=" col-6">
+                    <Col className=" col-6">
                         <h2>INICIA SESIÓN</h2>
                         {error.error ? <p className="alerta-error">{error.mensaje}</p> : null}
 
@@ -78,12 +78,12 @@ const Login = () => {
                                 Iniciar SESIÓN
                             </Button>
                             <Col>No tienes cuenta? <a href={`${url}/signup`}>Registrate</a></Col>
-                        </Form> 
-                </Col>
+                        </Form>
+                    </Col>
                 </Row>
             </Container>
         </Fragment>
     );
 }
 
-export default Login;
+export default Login1;

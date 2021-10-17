@@ -16,7 +16,7 @@ const Component = ({ dataProduct: { name, description, price, location, delivery
                 <Text>{location}</Text>
             </Location>
             <DeliveryTime>
-                <Label>Tiepo de entrega</Label>
+                <Label>Tiempo de entrega</Label>
                 <Text>{deliveryTime}</Text>
             </DeliveryTime>
         </ProductDetails>

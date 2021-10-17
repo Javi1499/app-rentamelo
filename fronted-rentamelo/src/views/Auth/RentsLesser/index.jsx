@@ -22,6 +22,7 @@ const Component = () => {
     }, [])
 
     const rentEnd = async idRent => {
+
         setShowAlert(false);
         const res = await axios.post(`http://localhost:4006/rentas/finalizar-renta/${idRent}`)
 

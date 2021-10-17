@@ -3,12 +3,14 @@ import styled from "styled-components"
 export const ProductDetails = styled.div`
 display: grid;
 width: 650px;
+height: 100%;
 grid-template: 
 "image title" 50px
 "image description" 100px
 "image rentDays" 30px/
 250px 350px
 ;
+background-color: #FFFFFF;
 
 `
 export const ImageContainer = styled.div`

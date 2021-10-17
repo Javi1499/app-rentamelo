@@ -1,9 +1,9 @@
 import React from 'react';
 import NavbarC from './components/Navbar'
-import Login from './components/Login'
+
 import FontsProvider from "./style/Fonts"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SingUp from './components/SignUp';
+// import SingUp1 from './components/SignUp';
 import PrivateRoute from './components/PrivateRoute';
 import MyProducts from './views/Auth/MyProducts';
 import Home from './views/Public/Home';
@@ -15,6 +15,8 @@ import RentDetailsPage from 'views/Auth/RentDetailsPage';
 import GlobalStyle from 'style/Global';
 import RentsLesser from 'views/Auth/RentsLesser';
 import { PageProfile } from 'views/Auth/Profile';
+import { SignUpPage } from 'views/Public/SignUp';
+import { LoginPage } from 'views/Public/Login';
 //const url="http://localhost:3000"
 
 function App() {
@@ -32,8 +34,8 @@ function App() {
         <PrivateRoute path="/rentas-arrendador" exact component={RentsLesser}></PrivateRoute>
         <PrivateRoute path="/detallesRenta/:idProduct/:rentDetails" exact component={RentDetailsPage}></PrivateRoute>
         <PrivateRoute path="/perfil" exact component={PageProfile}></PrivateRoute>
-        <Route path="/login" exact component={Login} />
-        <Route path="/signup" exact component={SingUp} />
+        <Route path="/login" exact component={LoginPage} />
+        <Route path="/signup" exact component={SignUpPage} />
         <Route path="/" exact component={Home} />
 
       </Switch>

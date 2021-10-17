@@ -18,5 +18,5 @@ export const RightColumn = styled.div`
 
 export const Container = styled.div`
   max-width: 1280px;
-  margin: 1em auto 0;
+  margin: 0 auto 0;
 `;

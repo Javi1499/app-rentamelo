@@ -5,7 +5,7 @@ const Component = ({ rentDetails: { status, startDate, endDate, idStatus }, data
     const isWaitingConfirmation = idStatus === 6;
     const rentInProgress = idStatus === 5;
     if (viewAs) return (
-        <RentDetails>
+        <RentDetails idStatus={idStatus}>
             <Section><Span>Estatus: </Span>{status}</Section>
             <Section><Span>Fecha de renta: </Span>
                 <Date>Inicio: {startDate}</Date>
@@ -21,7 +21,7 @@ const Component = ({ rentDetails: { status, startDate, endDate, idStatus }, data
     );
 
     return (
-        <RentDetails>
+        <RentDetails idStatus={idStatus}>
             <Section><Span>Estatus: </Span>{status}</Section>
             <Section><Span>Fecha de renta: </Span>
                 <Date>Inicio: {startDate}</Date>

@@ -22,6 +22,9 @@ margin: 8px 0;
 export const Title = styled.h2`
 font-size: 32px;
 font-family: "Roboto-Medium";
-width: 100%;
+width: 950px;
 text-align: center;
+color: #FFFFFF;
+border-radius: 4px;
+background-color: ${props => props.viewAs ? "#996600" : "#003466"};
 `
