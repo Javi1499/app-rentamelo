@@ -60,7 +60,7 @@ const rentasController = {
        try {
         await pool.query(`UPDATE rents SET ? WHERE idRent = ${idRent}`, [tiemposRenta])
 
-        res.status(200).json({mensaje:`Tu renta termina el ${fechas.msj}`, data:[]})
+        res.status(200).json({mensaje:`Tu renta termina el ${fechas.fechaFinal}`, data:[]})
            
        } catch (error) {
            console.error(error)
