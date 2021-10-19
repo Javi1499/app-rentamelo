@@ -13,10 +13,10 @@ const Component = () => {
                 <Category src={sports} name={"Deportes"} idCategory={1} />
             </Item>
             <Item>
-                <Category src={tools} name={"Herramientas"} idCategory={3} />
+                <Category src={tools} name={"Herramientas"} idCategory={2} />
             </Item>
             <Item>
-                <Category src={house} name={"Hogar"} idCategory={2} />
+                <Category src={house} name={"Hogar"} idCategory={3} />
             </Item>
             <Item>
                 <Category src={technology} name={"Tecnología"} idCategory={4} />
