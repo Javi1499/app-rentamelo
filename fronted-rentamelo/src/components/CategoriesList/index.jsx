@@ -10,16 +10,16 @@ const Component = () => {
     return (
         <CategoriesList>
             <Item>
-                <Category src={sports} name={"Deportes"} />
+                <Category src={sports} name={"Deportes"} idCategory={1} />
             </Item>
             <Item>
-                <Category src={tools} name={"Herramientas"} />
+                <Category src={tools} name={"Herramientas"} idCategory={3} />
             </Item>
             <Item>
-                <Category src={house} name={"Hogar"} />
+                <Category src={house} name={"Hogar"} idCategory={2} />
             </Item>
             <Item>
-                <Category src={technology} name={"Tecnología"} />
+                <Category src={technology} name={"Tecnología"} idCategory={4} />
             </Item>
 
 

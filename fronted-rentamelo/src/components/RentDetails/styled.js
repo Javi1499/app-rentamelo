@@ -58,3 +58,11 @@ margin-top: 16px;
     width: 70%;
 }
 `
+
+export const Anchor = styled.a`
+font: "Roboto";
+color: #1482FF;
+width: 100%;
+text-align: center;
+cursor: pointer;
+`

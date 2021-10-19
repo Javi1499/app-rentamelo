@@ -17,6 +17,7 @@ import RentsLesser from 'views/Auth/RentsLesser';
 import { PageProfile } from 'views/Auth/Profile';
 import { SignUpPage } from 'views/Public/SignUp';
 import { LoginPage } from 'views/Public/Login';
+import ProductsByCategory from 'views/Public/Category';
 //const url="http://localhost:3000"
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <PrivateRoute path="/rentas-arrendador" exact component={RentsLesser}></PrivateRoute>
         <PrivateRoute path="/detallesRenta/:idProduct/:rentDetails" exact component={RentDetailsPage}></PrivateRoute>
         <PrivateRoute path="/perfil" exact component={PageProfile}></PrivateRoute>
+        <Route path="/productos/categoria/:idCategory" exact component={ProductsByCategory} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/signup" exact component={SignUpPage} />
         <Route path="/" exact component={Home} />

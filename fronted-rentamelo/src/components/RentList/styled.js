@@ -2,7 +2,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
 display: flex;
 justify-content: center;
-margin-top: 16px;
+
 flex-wrap: wrap;
 `
 export const RentList = styled.div`
@@ -26,5 +26,5 @@ width: 950px;
 text-align: center;
 color: #FFFFFF;
 border-radius: 4px;
-background-color: ${props => props.viewAs ? "#996600" : "#003466"};
+background-color: ${props => props.viewAs ? "#0C6600" : "#003466"};
 `

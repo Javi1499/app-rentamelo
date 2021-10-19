@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Container } from 'components/Layout';
-import carrousel from "assets/carrousel/carrusel.png"
-import carrousel2 from "assets/carrousel/carrusel2.png"
-import carrousel3 from "assets/carrousel/carrusel3.png"
-import { ProductList, Carousel, CategoriesList } from 'components';
+import { ProductList, CategoriesList } from 'components';
+import { useParams } from 'react-router';
 
-const Home = () => {
+const ProductsByCategory = () => {
+    const { idCategory } = useParams()
     const [change, setChange] = useState(false);
     const [productsData, setProductsData] = useState([]);
     const obtenerInfo = async () => {
-        const productos = await axios.get("http://localhost:4006/productos");
-        setProductsData(productos.data.data);
+        let productos = await axios.get("http://localhost:4006/productos");
+        productos = productos.data.data
+        const productosByCategory = productos.filter(product => product.idCategory == idCategory);
+        setProductsData(productosByCategory);
         return;
     }
 
@@ -19,15 +20,8 @@ const Home = () => {
         obtenerInfo()
     }, [change])
 
-    const images = [
-        carrousel,
-        carrousel2,
-        carrousel3
-    ]
-
     return (
         <Container>
-            <Carousel images={images} imageToShow={1} />
             <CategoriesList />
             <ProductList productsData={productsData} change={change} setChange={setChange} />
         </Container>
@@ -35,4 +29,4 @@ const Home = () => {
 }
 
 
-export default Home;
+export default ProductsByCategory;

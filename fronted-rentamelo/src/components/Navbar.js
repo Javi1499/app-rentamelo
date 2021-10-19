@@ -10,7 +10,7 @@ const NavbarC = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         {getToken() ?
-          <Nav className="mr-auto">
+          <Nav className="ml-auto px-5">
             <Nav.Link href={`/`} >Inicio</Nav.Link>
             <Nav.Link href={`/agregar-producto`}>Agregar producto</Nav.Link>
             <NavDropdown title="Mi cuenta" id="basic-nav-dropdown">
@@ -22,7 +22,7 @@ const NavbarC = () => {
             </NavDropdown>
           </Nav>
           :
-          <Nav className="mr-auto">
+          <Nav className="ml-auto">
             <Nav.Link href="/" >Inicio</Nav.Link>
             <Button variant="success" style={{ marginRight: "2rem" }} href="/login">Login</Button>
             <Button variant="primary" href={`/signup`}>Registrarse</Button>

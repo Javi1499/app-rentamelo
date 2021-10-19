@@ -34,7 +34,7 @@ Carousel.Content = styled.div`
     return isLess ? "390px" : 100 / props.imagesToShow + "%" + " - 16px";
   }}
     );
-    height: 200px;
+    height: 250px;
     flex-shrink: 0;
     flex-grow: 1;
     margin: 0 8px;
